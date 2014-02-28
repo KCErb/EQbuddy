@@ -1,6 +1,6 @@
 class Member < ActiveRecord::Base
   belongs_to :household, inverse_of: :heads
-  belongs_to :house, class_name: "Household", inverse_of: :children #Sour Grapes
+  belongs_to :house, class_name: "Household", inverse_of: :children
   belongs_to :district, inverse_of: :district_leader
 
   has_many :teach_records, inverse_of: :member
