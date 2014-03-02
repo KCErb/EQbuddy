@@ -28,12 +28,12 @@ ActiveRecord::Schema.define do
   create_table :action_items do |table|
     table.integer :user_id
     table.string :description
-    table.datetime :expires
+    table.date :expires
   end
 
   create_table :notes do |table|
     table.integer :household_id
-    table.datetime :date
+    table.date :date
     table.string :description
   end
 
@@ -73,13 +73,30 @@ ActiveRecord::Schema.define do
     table.integer :house_id
     table.integer :district_id
     table.integer :spouse_id
-    table.string :name
+
+    table.string :last_name
+    table.string :pref_name
+    table.string :other_names
+    table.string :gender
     table.string :phone
+    table.string :email
+    table.string :home_teaches?
+    table.string :image_id
+    table.datetime :last_sync
+    table.string   :last_email
   end
 
   create_table :households do |table|
-    table.string :address
     table.string :ward_id
+    
+    table.string :add_1
+    table.string :add_2
+    table.decimal :latitude
+    table.decimal :longitude
+    table.string :phone
+    table.string :email
+    table.boolean :home_taught?
+    table.string :image_id
   end
 
   create_table :districts do |table|
