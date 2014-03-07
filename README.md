@@ -12,6 +12,6 @@ The upshot of this discussion is, a third party HT/VT app must:
 3. Be a stand alone desktop application
 4. Must be developed for Windows, Mac and Linux
 
-EQbuddy is written entirely using the Shoes library. That means it can be exported as a a stand-alone app and installed either on a home computer or a clerk's ofice computer.
+EQbuddy is written entirely using the Shoes library. That means it can be exported as a a stand-alone app and installed either on a home computer or a clerk's office computer.
 
 It can pull membership information from lds.org, or it can import it from MLS if an internet connection is not available.
