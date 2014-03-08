@@ -68,8 +68,10 @@ class Member < ActiveRecord::Base
   has_many :assignments, through: :assigned_teachers
   has_many :teachers, through: :household
   has_one  :spouse, class_name: "Member", foreign_key: :spouse_id
+  delegate :ward, to: :household
   delegate :children, to: :household
-  delegate :address, to: :household
+  delegate :add1, to: :household
+  delegate :add2, to: :household
 
   def teachees(month)
     ments = self.assignments.where(month: month)

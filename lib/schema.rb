@@ -79,7 +79,12 @@ ActiveRecord::Schema.define do
 
   create_table :settings do |table|
     table.integer :user_id
-    table.boolean :likes_cake?
+    table.boolean :use_voice?
+    table.boolean :use_gmail?
+    table.string :teach_self    #Disallow, allow, warn
+    table.string :teach_comp    #Disallow, allow, warn
+    table.string :teach_teacher #Disallow, allow, warn
+
   end
 
   create_table :taught_records do |table|
@@ -91,7 +96,7 @@ ActiveRecord::Schema.define do
   create_table :teach_records do |table|
     table.integer :member_id
     table.integer :month
-    table.integer :score
+    table.decimal :score
   end
 
   create_table :tags do |table|
