@@ -1,22 +1,10 @@
 #encoding: utf-8
 #Pull in example database for base case
 require_relative 'spec_init'
+require_relative 'schema_context'
 
 describe "KC" do
-  let (:ward) {Ward.first} #there's only one ward
-
-  let (:kc) {Member.find_by_pref_name("KC")}
-  let (:shelyse) {Member.find_by_pref_name("Shelyse")}
-  let (:oliver) {Member.find_by_pref_name("Oliver")}
-  let (:cory) {Member.find_by_pref_name("Cory")}
-  let (:james) {Member.find_by_pref_name("James")}
-  let (:bryce) {Member.find_by_pref_name("Bryce")}
-
-  let (:erb_hardy) {Household.find_by_house_name("KC Erb & Shelyse Hardy")}
-  let (:erbs) {Household.find_by_house_name("Cory & Sharlie Erb")}
-  let (:progler) {Household.find_by_house_name("Oliver Prögler")}
-  let (:wards) {Household.find_by_house_name("Bryce & Dianne Ward")}
-
+  include_context "schema context"
 #AR Columns/Attributes check
   it "is named KC." do
     kc.pref_name.should == "KC"
@@ -55,7 +43,6 @@ describe "KC" do
   it "'s teach record's should show Feb and Mar's teaching" do
     kc.teach_records.find_by_month(2).score.should == 4.0
     kc.teach_records.find_by_month(3).score.should == 3.7
-
   end
 
 #delegated attributes

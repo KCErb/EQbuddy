@@ -142,8 +142,10 @@ erbs.tags << [t2]
 #Create some notes
 n1 = Note.create(description: "Broken legs", date: Time.now - 5*24*60*60)
 n2 = Note.create(description: "Needs help in garden", date: Time.now)
+n3 = Note.create(description: "Just had a Baby, they're doing well", date: Date.new(2014,2,2))
 
 tucker.notes << [n1, n2]
+erb_hardy.notes << [n3]
 
 #Create action items
 a1 = ActionItem.create(expires: Time.now + 7*24*60*60, description: "Mow a lawn")

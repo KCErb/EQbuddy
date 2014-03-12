@@ -1,221 +1,223 @@
-D, [2014-03-08T13:08:34.001000 #1994] DEBUG -- :   [1m[36m (7.0ms)[0m  [1mCREATE TABLE "action_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "description" varchar(255), "expires" date) [0m
-D, [2014-03-08T13:08:34.009000 #1994] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "assigned_teachees" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "assignment_id" integer, "household_id" integer) 
-D, [2014-03-08T13:08:34.013000 #1994] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCREATE TABLE "assigned_teachers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "assignment_id" integer, "member_id" integer) [0m
-D, [2014-03-08T13:08:34.018000 #1994] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "district_id" integer, "month" integer) 
-D, [2014-03-08T13:08:34.023000 #1994] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCREATE TABLE "attendance_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_id" integer, "month" integer, "percent" integer) [0m
-D, [2014-03-08T13:08:34.027000 #1994] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "districts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "district_leader_id" integer) 
-D, [2014-03-08T13:08:34.034000 #1994] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCREATE TABLE "households" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "ward_id" varchar(255), "house_name" varchar(255), "add1" varchar(255), "add2" varchar(255), "latitude" decimal, "longitude" decimal, "phone" varchar(255), "email" varchar(255), "home_taught?" boolean, "image_id" varchar(255), "move_in" date, "move_out" date) [0m
-D, [2014-03-08T13:08:34.038000 #1994] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "household_tags" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "household_id" integer, "tag_id" integer) 
-D, [2014-03-08T13:08:34.049000 #1994] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCREATE TABLE "members" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "household_id" integer, "house_id" integer, "district_id" integer, "spouse_id" integer, "last_name" varchar(255), "pref_name" varchar(255), "other_names" varchar(255), "gender" varchar(255), "phone" varchar(255), "email" varchar(255), "home_teaches?" varchar(255), "image_id" varchar(255), "last_sync" datetime, "last_email" varchar(255), "dob" date) [0m
-D, [2014-03-08T13:08:34.059000 #1994] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "notes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "household_id" integer, "date" date, "description" varchar(255)) 
-D, [2014-03-08T13:08:34.065000 #1994] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCREATE TABLE "settings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "use_voice?" boolean, "use_gmail?" boolean, "teach_self" varchar(255), "teach_comp" varchar(255), "teach_teacher" varchar(255)) [0m
-D, [2014-03-08T13:08:34.070000 #1994] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "taught_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "household_id" integer, "month" integer, "score" integer) 
-D, [2014-03-08T13:08:34.074000 #1994] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCREATE TABLE "teach_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_id" integer, "month" integer, "score" decimal) [0m
-D, [2014-03-08T13:08:34.078000 #1994] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "tags" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) 
-D, [2014-03-08T13:08:34.083000 #1994] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "ward_id" integer, "name" varchar(255), "calling" varchar(255)) [0m
-D, [2014-03-08T13:08:34.087000 #1994] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "wards" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "ward_number" varchar(255), "stake_number" varchar(255)) 
-D, [2014-03-08T13:08:34.303000 #1994] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "wards"[0m
-D, [2014-03-08T13:08:34.338000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "wards" ("stake_number", "ward_number") VALUES ('1', '2168')
-D, [2014-03-08T13:08:34.348000 #1994] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "users"[0m
-D, [2014-03-08T13:08:34.374000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "users" ("calling", "name") VALUES ('eqp', 'KC Erb')
-D, [2014-03-08T13:08:34.401000 #1994] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "members"[0m
-D, [2014-03-08T13:08:34.478000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "members" ("dob", "email", "gender", "home_teaches?", "last_name", "phone", "pref_name") VALUES ('1988-04-28', 'iamkcerb@gmail.com', 'Male', 't', 'Erb', '8015548253', 'KC')
-D, [2014-03-08T13:08:34.499000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "members" ("dob", "gender", "home_teaches?", "last_name", "phone", "pref_name") VALUES ('1991-03-17', 'Female', 't', 'Hardy', '8015548253', 'Shelyse')[0m
-D, [2014-03-08T13:08:34.512000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "members" ("dob", "gender", "home_teaches?", "last_name", "pref_name") VALUES ('2014-01-28', 'Female', 'f', 'Erb', 'Audrey')
-D, [2014-03-08T13:08:34.522000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "members" ("dob", "email", "gender", "home_teaches?", "last_name", "pref_name") VALUES ('1972-07-01', 'iamkcerb@gmail.com', 'Male', 't', 'Prögler', 'Oliver')[0m
-D, [2014-03-08T13:08:34.534000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "members" ("dob", "email", "gender", "home_teaches?", "image_id", "last_name", "phone", "pref_name") VALUES ('1988-04-28', 'iamkcerb@gmail.com', 'Male', 't', 't200jmj99', 'Erb', '8015548253', 'Cory')
-D, [2014-03-08T13:08:34.544000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "members" ("dob", "email", "gender", "home_teaches?", "last_name", "pref_name") VALUES ('1988-03-04', 'iamkcerb@gmail.com', 'Female', 'f', 'Erb', 'Sharlie')[0m
-D, [2014-03-08T13:08:34.555000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "members" ("dob", "gender", "home_teaches?", "last_name", "pref_name") VALUES ('2013-05-26', 'Female', 'f', 'Erb', 'Adele')
-D, [2014-03-08T13:08:34.569000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "members" ("dob", "gender", "home_teaches?", "last_name", "pref_name") VALUES ('1938-12-22', 'Female', 'f', 'Tucker', 'Mildred')[0m
-D, [2014-03-08T13:08:34.581000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "members" ("dob", "email", "gender", "home_teaches?", "last_name", "phone", "pref_name") VALUES ('1987-09-21', 'iamkcerb@gmail.com', 'Male', 't', 'Hall', '8015548253', 'James')
-D, [2014-03-08T13:08:34.592000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "members" ("dob", "gender", "home_teaches?", "last_name", "phone", "pref_name") VALUES ('1985-07-11', 'Female', 'f', 'Hall', '8015548253', 'Caitlyn')[0m
-D, [2014-03-08T13:08:34.605000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "members" ("dob", "gender", "home_teaches?", "last_name", "phone", "pref_name") VALUES ('1983-09-23', 'Male', 't', 'Ward', '8015548253', 'Bryce')
-D, [2014-03-08T13:08:34.616000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "members" ("dob", "email", "gender", "home_teaches?", "last_name", "other_names", "pref_name") VALUES ('1984-03-01', 'iamkcerb@gmail.com', 'Female', 'f', 'Ward', 'Ruth', 'Dianne')[0m
-D, [2014-03-08T13:08:34.624000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "members" ("gender", "last_name", "pref_name") VALUES ('Male', 'Active', 'Less')
-D, [2014-03-08T13:08:34.642000 #1994] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 1 ORDER BY "members"."id" ASC LIMIT 1[0m
-D, [2014-03-08T13:08:34.652000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  UPDATE "members" SET "spouse_id" = 1 WHERE "members"."id" = 2
-D, [2014-03-08T13:08:34.657000 #1994] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 2 ORDER BY "members"."id" ASC LIMIT 1[0m
-D, [2014-03-08T13:08:34.663000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "spouse_id" = 2 WHERE "members"."id" = 1
-D, [2014-03-08T13:08:34.668000 #1994] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 5 ORDER BY "members"."id" ASC LIMIT 1[0m
-D, [2014-03-08T13:08:34.673000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "spouse_id" = 5 WHERE "members"."id" = 6
-D, [2014-03-08T13:08:34.679000 #1994] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 6 ORDER BY "members"."id" ASC LIMIT 1[0m
-D, [2014-03-08T13:08:34.695000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  UPDATE "members" SET "spouse_id" = 6 WHERE "members"."id" = 5
-D, [2014-03-08T13:08:34.701000 #1994] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 9 ORDER BY "members"."id" ASC LIMIT 1[0m
-D, [2014-03-08T13:08:34.706000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "spouse_id" = 9 WHERE "members"."id" = 10
-D, [2014-03-08T13:08:34.718000 #1994] DEBUG -- :   [1m[36mMember Load (2.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 10 ORDER BY "members"."id" ASC LIMIT 1[0m
-D, [2014-03-08T13:08:34.723000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "spouse_id" = 10 WHERE "members"."id" = 9
-D, [2014-03-08T13:08:34.730000 #1994] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 11 ORDER BY "members"."id" ASC LIMIT 1[0m
-D, [2014-03-08T13:08:34.736000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "spouse_id" = 11 WHERE "members"."id" = 12
-D, [2014-03-08T13:08:34.741000 #1994] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 12 ORDER BY "members"."id" ASC LIMIT 1[0m
-D, [2014-03-08T13:08:34.746000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "spouse_id" = 12 WHERE "members"."id" = 11
-D, [2014-03-08T13:08:34.759000 #1994] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "households"[0m
-D, [2014-03-08T13:08:34.808000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "households" ("add1", "email", "home_taught?", "house_name", "image_id", "latitude", "longitude", "move_in", "phone") VALUES ('752 E 800 S APT 17', 'iamkcerb@gmail.com', 't', 'KC Erb & Shelyse Hardy', 't100jmj89', 40.751508, -111.869295, '2012-06-30', '8015548253')
-D, [2014-03-08T13:08:34.818000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "households" ("add1", "home_taught?", "house_name", "image_id", "latitude", "longitude", "move_in", "phone") VALUES ('800 E 854 S', 't', 'Cory & Sharlie Erb', 't200jmj89', 40.750878, -111.867949, '2013-03-10', '8015548253')[0m
-D, [2014-03-08T13:08:34.836000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "households" ("add1", "add2", "home_taught?", "house_name", "latitude", "longitude", "move_in") VALUES ('1062 McClelland St.', 'Apt B', 'f', 'Oliver Prögler', 40.74567, -111.861468, '2010-12-01')
-D, [2014-03-08T13:08:34.846000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "households" ("add1", "home_taught?", "house_name", "latitude", "longitude", "move_in") VALUES ('967 S 900 E', 'f', 'Mildred Tucker', 40.747956, -111.865184, '1974-03-15')[0m
-D, [2014-03-08T13:08:34.856000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "households" ("add1", "add2", "home_taught?", "house_name", "latitude", "longitude", "move_in", "move_out") VALUES ('752 E 800 S', 'APT 21', 't', 'James & Caitlyn Hall', 40.7515, -111.869295, '2009-07-15', '2014-02-20')
-D, [2014-03-08T13:08:34.864000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "households" ("add1", "email", "house_name", "latitude", "longitude", "move_in") VALUES ('1012 Lincoln', 'iamkcerb@gmail.com', 'Bryce & Dianne Ward', 40.747135, -111.86412, '2012-11-15')[0m
-D, [2014-03-08T13:08:34.872000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "households" ("add1", "house_name", "latitude", "longitude", "move_in") VALUES ('123 Fake St.', 'Less Active', 40.750878, -111.867949, '2005-09-11')
-D, [2014-03-08T13:08:34.890000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "members" SET "household_id" = 1 WHERE "members"."id" = 1[0m
-D, [2014-03-08T13:08:34.895000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "household_id" = 1 WHERE "members"."id" = 2
-D, [2014-03-08T13:08:34.907000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "members" SET "house_id" = 1 WHERE "members"."id" = 3[0m
-D, [2014-03-08T13:08:34.916000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "household_id" = 2 WHERE "members"."id" = 5
-D, [2014-03-08T13:08:34.922000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "members" SET "household_id" = 2 WHERE "members"."id" = 6[0m
-D, [2014-03-08T13:08:34.932000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "house_id" = 2 WHERE "members"."id" = 7
-D, [2014-03-08T13:08:34.940000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mUPDATE "members" SET "household_id" = 3 WHERE "members"."id" = 4[0m
-D, [2014-03-08T13:08:34.948000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "household_id" = 4 WHERE "members"."id" = 8
-D, [2014-03-08T13:08:34.956000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "members" SET "household_id" = 5 WHERE "members"."id" = 9[0m
-D, [2014-03-08T13:08:34.960000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "household_id" = 5 WHERE "members"."id" = 10
-D, [2014-03-08T13:08:34.969000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "members" SET "household_id" = 6 WHERE "members"."id" = 11[0m
-D, [2014-03-08T13:08:34.974000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "household_id" = 6 WHERE "members"."id" = 12
-D, [2014-03-08T13:08:34.991000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "members" SET "household_id" = 7 WHERE "members"."id" = 13[0m
-D, [2014-03-08T13:08:34.996000 #1994] DEBUG -- :   [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type = 'table' AND name = "districts"
-D, [2014-03-08T13:08:35.012000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "districts" DEFAULT VALUES[0m
-D, [2014-03-08T13:08:35.017000 #1994] DEBUG -- :   [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type = 'table' AND name = "assignments"
-D, [2014-03-08T13:08:35.031000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assignments" ("month") VALUES (2)[0m
-D, [2014-03-08T13:08:35.036000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assignments" ("month") VALUES (2)
-D, [2014-03-08T13:08:35.042000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "assignments" ("month") VALUES (3)[0m
-D, [2014-03-08T13:08:35.047000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assignments" ("month") VALUES (3)
-D, [2014-03-08T13:08:35.052000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "assignments" ("month") VALUES (3)[0m
-D, [2014-03-08T13:08:35.064000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "assignments" SET "district_id" = 1 WHERE "assignments"."id" = 1
-D, [2014-03-08T13:08:35.078000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "assignments" SET "district_id" = 1 WHERE "assignments"."id" = 2[0m
-D, [2014-03-08T13:08:35.083000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "assignments" SET "district_id" = 1 WHERE "assignments"."id" = 3
-D, [2014-03-08T13:08:35.087000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "assignments" SET "district_id" = 1 WHERE "assignments"."id" = 4[0m
-D, [2014-03-08T13:08:35.095000 #1994] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."district_id" = 1 ORDER BY "members"."id" ASC LIMIT 1
-D, [2014-03-08T13:08:35.103000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mUPDATE "members" SET "district_id" = 1 WHERE "members"."id" = 5[0m
-D, [2014-03-08T13:08:35.125000 #1994] DEBUG -- :   [1m[35m (1.0ms)[0m  SELECT name FROM sqlite_master WHERE type = 'table' AND name = "assigned_teachers"
-D, [2014-03-08T13:08:35.156000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (1, 5)[0m
-D, [2014-03-08T13:08:35.163000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (1, 4)
-D, [2014-03-08T13:08:35.176000 #1994] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "assigned_teachees"[0m
-D, [2014-03-08T13:08:35.193000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (1, 1)
-D, [2014-03-08T13:08:35.198000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (1, 5)[0m
-D, [2014-03-08T13:08:35.203000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (1, 6)
-D, [2014-03-08T13:08:35.216000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (2, 1)[0m
-D, [2014-03-08T13:08:35.223000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (2, 9)
-D, [2014-03-08T13:08:35.228000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (2, 11)[0m
-D, [2014-03-08T13:08:35.239000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (2, 2)
-D, [2014-03-08T13:08:35.245000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (2, 3)[0m
-D, [2014-03-08T13:08:35.255000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (3, 5)
-D, [2014-03-08T13:08:35.265000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (3, 4)[0m
-D, [2014-03-08T13:08:35.274000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (3, 1)
-D, [2014-03-08T13:08:35.284000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (4, 1)[0m
-D, [2014-03-08T13:08:35.289000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (4, 11)
-D, [2014-03-08T13:08:35.298000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (4, 2)[0m
-D, [2014-03-08T13:08:35.303000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (4, 3)
-D, [2014-03-08T13:08:35.312000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (5, 1)[0m
-D, [2014-03-08T13:08:35.321000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (5, 2)
-D, [2014-03-08T13:08:35.332000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (5, 6)[0m
-D, [2014-03-08T13:08:35.349000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  UPDATE "households" SET "ward_id" = 1 WHERE "households"."id" = 2
-D, [2014-03-08T13:08:35.356000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mUPDATE "households" SET "ward_id" = 1 WHERE "households"."id" = 1[0m
-D, [2014-03-08T13:08:35.361000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "households" SET "ward_id" = 1 WHERE "households"."id" = 3
-D, [2014-03-08T13:08:35.368000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mUPDATE "households" SET "ward_id" = 1 WHERE "households"."id" = 4[0m
-D, [2014-03-08T13:08:35.374000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "households" SET "ward_id" = 1 WHERE "households"."id" = 5
-D, [2014-03-08T13:08:35.381000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mUPDATE "households" SET "ward_id" = 1 WHERE "households"."id" = 6[0m
-D, [2014-03-08T13:08:35.386000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "households" SET "ward_id" = 1 WHERE "households"."id" = 7
-D, [2014-03-08T13:08:35.391000 #1994] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "tags"[0m
-D, [2014-03-08T13:08:35.402000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "tags" ("name") VALUES ('Do not contact')
-D, [2014-03-08T13:08:35.407000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "tags" ("name") VALUES ('Has Car')[0m
-D, [2014-03-08T13:08:35.427000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "tags" ("name") VALUES ('Computer Skills')
-D, [2014-03-08T13:08:35.452000 #1994] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "household_tags"[0m
-D, [2014-03-08T13:08:35.477000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "household_tags" ("household_id", "tag_id") VALUES (7, 1)
-D, [2014-03-08T13:08:35.485000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "household_tags" ("household_id", "tag_id") VALUES (1, 2)[0m
-D, [2014-03-08T13:08:35.489000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "household_tags" ("household_id", "tag_id") VALUES (1, 3)
-D, [2014-03-08T13:08:35.497000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "household_tags" ("household_id", "tag_id") VALUES (2, 2)[0m
-D, [2014-03-08T13:08:35.503000 #1994] DEBUG -- :   [1m[35m (1.0ms)[0m  SELECT name FROM sqlite_master WHERE type = 'table' AND name = "notes"
-D, [2014-03-08T13:08:35.520000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "notes" ("date", "description") VALUES ('2014-03-03', 'Broken legs')[0m
-D, [2014-03-08T13:08:35.527000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("date", "description") VALUES ('2014-03-08', 'Needs help in garden')
-D, [2014-03-08T13:08:35.541000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "notes" SET "household_id" = 4 WHERE "notes"."id" = 1[0m
-D, [2014-03-08T13:08:35.544000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  UPDATE "notes" SET "household_id" = 4 WHERE "notes"."id" = 2
-D, [2014-03-08T13:08:35.548000 #1994] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "action_items"[0m
-D, [2014-03-08T13:08:35.564000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "action_items" ("description", "expires") VALUES ('Mow a lawn', '2014-03-15')
-D, [2014-03-08T13:08:35.576000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mUPDATE "action_items" SET "user_id" = 1 WHERE "action_items"."id" = 1[0m
-D, [2014-03-08T13:08:35.581000 #1994] DEBUG -- :   [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type = 'table' AND name = "settings"
-D, [2014-03-08T13:08:35.603000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "settings" ("use_gmail?") VALUES ('t')[0m
-D, [2014-03-08T13:08:35.607000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "settings" ("use_voice?") VALUES ('t')
-D, [2014-03-08T13:08:35.611000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "settings" ("teach_self") VALUES ('disallow')[0m
-D, [2014-03-08T13:08:35.615000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "settings" ("teach_comp") VALUES ('warn')
-D, [2014-03-08T13:08:35.619000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "settings" ("teach_teacher") VALUES ('allow')[0m
-D, [2014-03-08T13:08:35.631000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  UPDATE "settings" SET "user_id" = 1 WHERE "settings"."id" = 1
-D, [2014-03-08T13:08:35.635000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "settings" SET "user_id" = 1 WHERE "settings"."id" = 2[0m
-D, [2014-03-08T13:08:35.639000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "settings" SET "user_id" = 1 WHERE "settings"."id" = 3
-D, [2014-03-08T13:08:35.643000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "settings" SET "user_id" = 1 WHERE "settings"."id" = 4[0m
-D, [2014-03-08T13:08:35.647000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "settings" SET "user_id" = 1 WHERE "settings"."id" = 5
-D, [2014-03-08T13:08:35.660000 #1994] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "taught_records"[0m
-D, [2014-03-08T13:08:35.678000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "taught_records" ("household_id", "month", "score") VALUES (1, 2, 1)
-D, [2014-03-08T13:08:35.690000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "taught_records" ("household_id", "month", "score") VALUES (5, 2, 3)[0m
-D, [2014-03-08T13:08:35.696000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "taught_records" ("household_id", "month", "score") VALUES (6, 2, 2)
-D, [2014-03-08T13:08:35.702000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "taught_records" ("household_id", "month", "score") VALUES (2, 2, 4)[0m
-D, [2014-03-08T13:08:35.709000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "taught_records" ("household_id", "month", "score") VALUES (3, 2, 4)
-D, [2014-03-08T13:08:35.714000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "taught_records" ("household_id", "month", "score") VALUES (1, 3, 0)[0m
-D, [2014-03-08T13:08:35.720000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "taught_records" ("household_id", "month", "score") VALUES (2, 3, 3)
-D, [2014-03-08T13:08:35.725000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "taught_records" ("household_id", "month", "score") VALUES (3, 3, 4)[0m
-D, [2014-03-08T13:08:35.731000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "taught_records" ("household_id", "month", "score") VALUES (6, 3, 4)
-D, [2014-03-08T13:08:35.739000 #1994] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "teach_records"[0m
-D, [2014-03-08T13:08:35.758000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "teach_records" ("member_id", "month", "score") VALUES (5, 2, 2.0)
-D, [2014-03-08T13:08:35.765000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "teach_records" ("member_id", "month", "score") VALUES (4, 2, 2.0)[0m
-D, [2014-03-08T13:08:35.772000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "teach_records" ("member_id", "month", "score") VALUES (1, 2, 4.0)
-D, [2014-03-08T13:08:35.779000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "teach_records" ("member_id", "month", "score") VALUES (9, 2, 4.0)[0m
-D, [2014-03-08T13:08:35.787000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "teach_records" ("member_id", "month", "score") VALUES (11, 2, 4.0)
-D, [2014-03-08T13:08:35.792000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "teach_records" ("member_id", "month", "score") VALUES (5, 3, 0.0)[0m
-D, [2014-03-08T13:08:35.798000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "teach_records" ("member_id", "month", "score") VALUES (4, 3, 0.0)
-D, [2014-03-08T13:08:35.803000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "teach_records" ("member_id", "month", "score") VALUES (1, 3, 3.7)[0m
-D, [2014-03-08T13:08:35.808000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "teach_records" ("member_id", "month", "score") VALUES (11, 3, 3.5)
-D, [2014-03-08T13:08:35.815000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "teach_records" ("member_id", "month", "score") VALUES (2, 3, 4.0)[0m
-D, [2014-03-08T13:08:35.823000 #1994] DEBUG -- :   [1m[35m (1.0ms)[0m  SELECT name FROM sqlite_master WHERE type = 'table' AND name = "attendance_records"
-D, [2014-03-08T13:08:35.839000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (1, 2, 75)[0m
-D, [2014-03-08T13:08:35.845000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (5, 2, 100)
-D, [2014-03-08T13:08:35.851000 #1994] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (4, 2, 75)[0m
-D, [2014-03-08T13:08:35.857000 #1994] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (11, 2, 25)
-D, [2014-03-08T13:08:35.863000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (9, 2, 50)[0m
-D, [2014-03-08T13:08:35.868000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (1, 3, 100)
-D, [2014-03-08T13:08:35.874000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (5, 3, 100)[0m
-D, [2014-03-08T13:08:35.884000 #1994] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (4, 3, 0)
-D, [2014-03-08T13:08:35.890000 #1994] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (11, 3, 100)[0m
-D, [2014-03-08T13:08:36.054000 #1994] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
-D, [2014-03-08T13:08:36.060000 #1994] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1[0m
-D, [2014-03-08T13:08:36.065000 #1994] DEBUG -- :   [1m[35mHousehold Load (1.0ms)[0m  SELECT "households".* FROM "households" WHERE "households"."id" = 1 ORDER BY "households"."id" ASC LIMIT 1
-D, [2014-03-08T13:08:36.070000 #1994] DEBUG -- :   [1m[36mHousehold Load (1.0ms)[0m  [1mSELECT "households".* FROM "households" WHERE "households"."house_name" = 'KC Erb & Shelyse Hardy' LIMIT 1[0m
-D, [2014-03-08T13:08:36.074000 #1994] DEBUG -- :   [1m[35mMember Load (1.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
-D, [2014-03-08T13:08:36.078000 #1994] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 1 ORDER BY "members"."id" ASC LIMIT 1[0m
-D, [2014-03-08T13:08:36.082000 #1994] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
-D, [2014-03-08T13:08:36.119000 #1994] DEBUG -- :   [1m[36mAssignment Load (0.0ms)[0m  [1mSELECT "assignments".* FROM "assignments" INNER JOIN "assigned_teachers" ON "assignments"."id" = "assigned_teachers"."assignment_id" WHERE "assigned_teachers"."member_id" = 1 AND "assignments"."month" = 3[0m
-D, [2014-03-08T13:08:36.129000 #1994] DEBUG -- :   [1m[35mHousehold Load (0.0ms)[0m  SELECT "households".* FROM "households" INNER JOIN "assigned_teachees" ON "households"."id" = "assigned_teachees"."household_id" WHERE "assigned_teachees"."assignment_id" = 4
-D, [2014-03-08T13:08:36.132000 #1994] DEBUG -- :   [1m[36mHousehold Load (1.0ms)[0m  [1mSELECT "households".* FROM "households" INNER JOIN "assigned_teachees" ON "households"."id" = "assigned_teachees"."household_id" WHERE "assigned_teachees"."assignment_id" = 5[0m
-D, [2014-03-08T13:08:36.134000 #1994] DEBUG -- :   [1m[35mHousehold Load (0.0ms)[0m  SELECT "households".* FROM "households" WHERE "households"."house_name" = 'Cory & Sharlie Erb' LIMIT 1
-D, [2014-03-08T13:08:36.136000 #1994] DEBUG -- :   [1m[36mHousehold Load (0.0ms)[0m  [1mSELECT "households".* FROM "households" WHERE "households"."house_name" = 'Oliver Prögler' LIMIT 1[0m
-D, [2014-03-08T13:08:36.139000 #1994] DEBUG -- :   [1m[35mHousehold Load (0.0ms)[0m  SELECT "households".* FROM "households" WHERE "households"."house_name" = 'Bryce & Dianne Ward' LIMIT 1
-D, [2014-03-08T13:08:36.142000 #1994] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1[0m
-D, [2014-03-08T13:08:36.145000 #1994] DEBUG -- :   [1m[35mHousehold Load (0.0ms)[0m  SELECT "households".* FROM "households" WHERE "households"."id" = 1 ORDER BY "households"."id" ASC LIMIT 1
-D, [2014-03-08T13:08:36.156000 #1994] DEBUG -- :   [1m[36mAssignment Load (1.0ms)[0m  [1mSELECT "assignments".* FROM "assignments" INNER JOIN "assigned_teachees" ON "assignments"."id" = "assigned_teachees"."assignment_id" WHERE "assigned_teachees"."household_id" = 1 AND "assignments"."month" = 2 LIMIT 1[0m
-D, [2014-03-08T13:08:36.161000 #1994] DEBUG -- :   [1m[35mMember Load (1.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'Cory' LIMIT 1
-D, [2014-03-08T13:08:36.163000 #1994] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'Oliver' LIMIT 1[0m
-D, [2014-03-08T13:08:36.166000 #1994] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 1
-D, [2014-03-08T13:08:36.169000 #1994] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1[0m
-D, [2014-03-08T13:08:36.173000 #1994] DEBUG -- :   [1m[35mAssignment Load (0.0ms)[0m  SELECT "assignments".* FROM "assignments" INNER JOIN "assigned_teachers" ON "assignments"."id" = "assigned_teachers"."assignment_id" WHERE "assigned_teachers"."member_id" = 1 AND "assignments"."month" = 2
-D, [2014-03-08T13:08:36.178000 #1994] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 2[0m
-D, [2014-03-08T13:08:36.180000 #1994] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'James' LIMIT 1
-D, [2014-03-08T13:08:36.182000 #1994] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'Bryce' LIMIT 1[0m
-D, [2014-03-08T13:08:36.185000 #1994] DEBUG -- :   [1m[35mMember Load (1.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
-D, [2014-03-08T13:08:36.190000 #1994] DEBUG -- :   [1m[36mAssignment Load (1.0ms)[0m  [1mSELECT "assignments".* FROM "assignments" INNER JOIN "assigned_teachers" ON "assignments"."id" = "assigned_teachers"."assignment_id" WHERE "assigned_teachers"."member_id" = 1 AND "assignments"."month" = 3[0m
-D, [2014-03-08T13:08:36.195000 #1994] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 4
-D, [2014-03-08T13:08:36.198000 #1994] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 5[0m
-D, [2014-03-08T13:08:36.200000 #1994] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'Bryce' LIMIT 1
-D, [2014-03-08T13:08:36.202000 #1994] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'Shelyse' LIMIT 1[0m
-D, [2014-03-08T13:08:36.205000 #1994] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
-D, [2014-03-08T13:08:36.210000 #1994] DEBUG -- :   [1m[36mAttendanceRecord Load (0.0ms)[0m  [1mSELECT "attendance_records".* FROM "attendance_records" WHERE "attendance_records"."member_id" = 1 AND "attendance_records"."month" = 2 LIMIT 1[0m
-D, [2014-03-08T13:08:36.213000 #1994] DEBUG -- :   [1m[35mAttendanceRecord Load (0.0ms)[0m  SELECT "attendance_records".* FROM "attendance_records" WHERE "attendance_records"."member_id" = 1 AND "attendance_records"."month" = 3 LIMIT 1
-D, [2014-03-08T13:08:36.216000 #1994] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1[0m
-D, [2014-03-08T13:08:36.221000 #1994] DEBUG -- :   [1m[35mTeachRecord Load (0.0ms)[0m  SELECT "teach_records".* FROM "teach_records" WHERE "teach_records"."member_id" = 1 AND "teach_records"."month" = 2 LIMIT 1
-D, [2014-03-08T13:08:36.225000 #1994] DEBUG -- :   [1m[36mTeachRecord Load (0.0ms)[0m  [1mSELECT "teach_records".* FROM "teach_records" WHERE "teach_records"."member_id" = 1 AND "teach_records"."month" = 3 LIMIT 1[0m
-D, [2014-03-08T13:08:36.229000 #1994] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
-D, [2014-03-08T13:08:36.232000 #1994] DEBUG -- :   [1m[36mHousehold Load (0.0ms)[0m  [1mSELECT "households".* FROM "households" WHERE "households"."id" = 1 ORDER BY "households"."id" ASC LIMIT 1[0m
-D, [2014-03-08T13:08:36.234000 #1994] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."house_id" = 1
-D, [2014-03-08T13:08:36.237000 #1994] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1[0m
-D, [2014-03-08T13:08:36.240000 #1994] DEBUG -- :   [1m[35mHousehold Load (0.0ms)[0m  SELECT "households".* FROM "households" WHERE "households"."id" = 1 ORDER BY "households"."id" ASC LIMIT 1
-D, [2014-03-08T13:08:36.247000 #1994] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."house_id" = 1 AND "members"."pref_name" = 'Audrey' LIMIT 1[0m
-D, [2014-03-08T13:08:36.274000 #1994] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
-D, [2014-03-08T13:08:36.282000 #1994] DEBUG -- :   [1m[36mHousehold Load (1.0ms)[0m  [1mSELECT "households".* FROM "households" WHERE "households"."id" = 1 ORDER BY "households"."id" ASC LIMIT 1[0m
-D, [2014-03-08T13:08:36.285000 #1994] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
-D, [2014-03-08T13:08:36.287000 #1994] DEBUG -- :   [1m[36mHousehold Load (0.0ms)[0m  [1mSELECT "households".* FROM "households" WHERE "households"."id" = 1 ORDER BY "households"."id" ASC LIMIT 1[0m
-D, [2014-03-08T13:08:36.291000 #1994] DEBUG -- :   [1m[35mWard Load (1.0ms)[0m  SELECT "wards".* FROM "wards" WHERE "wards"."id" = 1 ORDER BY "wards"."id" ASC LIMIT 1
-D, [2014-03-08T13:08:36.294000 #1994] DEBUG -- :   [1m[36mWard Load (1.0ms)[0m  [1mSELECT "wards".* FROM "wards" ORDER BY "wards"."id" ASC LIMIT 1[0m
+D, [2014-03-12T12:01:07.109000 #17255] DEBUG -- :   [1m[36m (6.0ms)[0m  [1mCREATE TABLE "action_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "description" varchar(255), "expires" date) [0m
+D, [2014-03-12T12:01:07.117000 #17255] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "assigned_teachees" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "assignment_id" integer, "household_id" integer) 
+D, [2014-03-12T12:01:07.122000 #17255] DEBUG -- :   [1m[36m (2.0ms)[0m  [1mCREATE TABLE "assigned_teachers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "assignment_id" integer, "member_id" integer) [0m
+D, [2014-03-12T12:01:07.127000 #17255] DEBUG -- :   [1m[35m (2.0ms)[0m  CREATE TABLE "assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "district_id" integer, "month" integer) 
+D, [2014-03-12T12:01:07.132000 #17255] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCREATE TABLE "attendance_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_id" integer, "month" integer, "percent" integer) [0m
+D, [2014-03-12T12:01:07.136000 #17255] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "districts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "district_leader_id" integer) 
+D, [2014-03-12T12:01:07.143000 #17255] DEBUG -- :   [1m[36m (2.0ms)[0m  [1mCREATE TABLE "households" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "ward_id" varchar(255), "name" varchar(255), "add1" varchar(255), "add2" varchar(255), "latitude" decimal, "longitude" decimal, "phone" varchar(255), "email" varchar(255), "home_taught?" boolean, "image_id" varchar(255), "move_in" date, "move_out" date) [0m
+D, [2014-03-12T12:01:07.148000 #17255] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "household_tags" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "household_id" integer, "tag_id" integer) 
+D, [2014-03-12T12:01:07.157000 #17255] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCREATE TABLE "members" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "household_id" integer, "house_id" integer, "district_id" integer, "spouse_id" integer, "last_name" varchar(255), "pref_name" varchar(255), "other_names" varchar(255), "gender" varchar(255), "phone" varchar(255), "email" varchar(255), "home_teaches?" varchar(255), "image_id" varchar(255), "last_sync" datetime, "last_email" varchar(255), "dob" date) [0m
+D, [2014-03-12T12:01:07.165000 #17255] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "notes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "household_id" integer, "date" date, "description" varchar(255)) 
+D, [2014-03-12T12:01:07.171000 #17255] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCREATE TABLE "settings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "use_voice?" boolean, "use_gmail?" boolean, "teach_self" varchar(255), "teach_comp" varchar(255), "teach_teacher" varchar(255)) [0m
+D, [2014-03-12T12:01:07.175000 #17255] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "taught_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "household_id" integer, "month" integer, "score" integer) 
+D, [2014-03-12T12:01:07.181000 #17255] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCREATE TABLE "teach_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_id" integer, "month" integer, "score" decimal) [0m
+D, [2014-03-12T12:01:07.184000 #17255] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "tags" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) 
+D, [2014-03-12T12:01:07.189000 #17255] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "ward_id" integer, "name" varchar(255), "calling" varchar(255)) [0m
+D, [2014-03-12T12:01:07.193000 #17255] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE TABLE "wards" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "ward_number" varchar(255), "stake_number" varchar(255)) 
+D, [2014-03-12T12:01:07.427000 #17255] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "wards"[0m
+D, [2014-03-12T12:01:07.457000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "wards" ("stake_number", "ward_number") VALUES ('1', '2168')
+D, [2014-03-12T12:01:07.467000 #17255] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "users"[0m
+D, [2014-03-12T12:01:07.492000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "users" ("calling", "name") VALUES ('eqp', 'KC Erb')
+D, [2014-03-12T12:01:07.521000 #17255] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "members"[0m
+D, [2014-03-12T12:01:07.600000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "members" ("dob", "email", "gender", "home_teaches?", "last_name", "phone", "pref_name") VALUES ('1988-04-28', 'iamkcerb@gmail.com', 'Male', 't', 'Erb', '8015548253', 'KC')
+D, [2014-03-12T12:01:07.621000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "members" ("dob", "gender", "home_teaches?", "last_name", "phone", "pref_name") VALUES ('1991-03-17', 'Female', 't', 'Hardy', '8015548253', 'Shelyse')[0m
+D, [2014-03-12T12:01:07.634000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "members" ("dob", "gender", "home_teaches?", "last_name", "pref_name") VALUES ('2014-01-28', 'Female', 'f', 'Erb', 'Audrey')
+D, [2014-03-12T12:01:07.645000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "members" ("dob", "email", "gender", "home_teaches?", "last_name", "pref_name") VALUES ('1972-07-01', 'iamkcerb@gmail.com', 'Male', 't', 'Prögler', 'Oliver')[0m
+D, [2014-03-12T12:01:07.658000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "members" ("dob", "email", "gender", "home_teaches?", "image_id", "last_name", "phone", "pref_name") VALUES ('1988-04-28', 'iamkcerb@gmail.com', 'Male', 't', 't200jmj99', 'Erb', '8015548253', 'Cory')
+D, [2014-03-12T12:01:07.669000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "members" ("dob", "email", "gender", "home_teaches?", "last_name", "pref_name") VALUES ('1988-03-04', 'iamkcerb@gmail.com', 'Female', 'f', 'Erb', 'Sharlie')[0m
+D, [2014-03-12T12:01:07.682000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "members" ("dob", "gender", "home_teaches?", "last_name", "pref_name") VALUES ('2013-05-26', 'Female', 'f', 'Erb', 'Adele')
+D, [2014-03-12T12:01:07.693000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "members" ("dob", "gender", "home_teaches?", "last_name", "pref_name") VALUES ('1938-12-22', 'Female', 'f', 'Tucker', 'Mildred')[0m
+D, [2014-03-12T12:01:07.707000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "members" ("dob", "email", "gender", "home_teaches?", "last_name", "phone", "pref_name") VALUES ('1987-09-21', 'iamkcerb@gmail.com', 'Male', 't', 'Hall', '8015548253', 'James')
+D, [2014-03-12T12:01:07.717000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "members" ("dob", "gender", "home_teaches?", "last_name", "phone", "pref_name") VALUES ('1985-07-11', 'Female', 'f', 'Hall', '8015548253', 'Caitlyn')[0m
+D, [2014-03-12T12:01:07.726000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "members" ("dob", "gender", "home_teaches?", "last_name", "phone", "pref_name") VALUES ('1983-09-23', 'Male', 't', 'Ward', '8015548253', 'Bryce')
+D, [2014-03-12T12:01:07.735000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "members" ("dob", "email", "gender", "home_teaches?", "last_name", "other_names", "pref_name") VALUES ('1984-03-01', 'iamkcerb@gmail.com', 'Female', 'f', 'Ward', 'Ruth', 'Dianne')[0m
+D, [2014-03-12T12:01:07.743000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "members" ("gender", "last_name", "pref_name") VALUES ('Male', 'Active', 'Less')
+D, [2014-03-12T12:01:07.763000 #17255] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 1 ORDER BY "members"."id" ASC LIMIT 1[0m
+D, [2014-03-12T12:01:07.772000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  UPDATE "members" SET "spouse_id" = 1 WHERE "members"."id" = 2
+D, [2014-03-12T12:01:07.777000 #17255] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 2 ORDER BY "members"."id" ASC LIMIT 1[0m
+D, [2014-03-12T12:01:07.782000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "spouse_id" = 2 WHERE "members"."id" = 1
+D, [2014-03-12T12:01:07.788000 #17255] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 5 ORDER BY "members"."id" ASC LIMIT 1[0m
+D, [2014-03-12T12:01:07.793000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "spouse_id" = 5 WHERE "members"."id" = 6
+D, [2014-03-12T12:01:07.820000 #17255] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 6 ORDER BY "members"."id" ASC LIMIT 1[0m
+D, [2014-03-12T12:01:07.826000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "spouse_id" = 6 WHERE "members"."id" = 5
+D, [2014-03-12T12:01:07.834000 #17255] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 9 ORDER BY "members"."id" ASC LIMIT 1[0m
+D, [2014-03-12T12:01:07.838000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "spouse_id" = 9 WHERE "members"."id" = 10
+D, [2014-03-12T12:01:07.850000 #17255] DEBUG -- :   [1m[36mMember Load (2.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 10 ORDER BY "members"."id" ASC LIMIT 1[0m
+D, [2014-03-12T12:01:07.856000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  UPDATE "members" SET "spouse_id" = 10 WHERE "members"."id" = 9
+D, [2014-03-12T12:01:07.862000 #17255] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 11 ORDER BY "members"."id" ASC LIMIT 1[0m
+D, [2014-03-12T12:01:07.869000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  UPDATE "members" SET "spouse_id" = 11 WHERE "members"."id" = 12
+D, [2014-03-12T12:01:07.876000 #17255] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 12 ORDER BY "members"."id" ASC LIMIT 1[0m
+D, [2014-03-12T12:01:07.881000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  UPDATE "members" SET "spouse_id" = 12 WHERE "members"."id" = 11
+D, [2014-03-12T12:01:07.893000 #17255] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "households"[0m
+D, [2014-03-12T12:01:07.942000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "households" ("add1", "email", "home_taught?", "image_id", "latitude", "longitude", "move_in", "name", "phone") VALUES ('752 E 800 S APT 17', 'iamkcerb@gmail.com', 't', 't100jmj89', 40.751508, -111.869295, '2012-06-30', 'KC Erb & Shelyse Hardy', '8015548253')
+D, [2014-03-12T12:01:07.953000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "households" ("add1", "home_taught?", "image_id", "latitude", "longitude", "move_in", "name", "phone") VALUES ('800 E 854 S', 't', 't200jmj89', 40.750878, -111.867949, '2013-03-10', 'Cory & Sharlie Erb', '8015548253')[0m
+D, [2014-03-12T12:01:07.971000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "households" ("add1", "add2", "home_taught?", "latitude", "longitude", "move_in", "name") VALUES ('1062 McClelland St.', 'Apt B', 'f', 40.74567, -111.861468, '2010-12-01', 'Oliver Prögler')
+D, [2014-03-12T12:01:07.981000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "households" ("add1", "home_taught?", "latitude", "longitude", "move_in", "name") VALUES ('967 S 900 E', 'f', 40.747956, -111.865184, '1974-03-15', 'Mildred Tucker')[0m
+D, [2014-03-12T12:01:07.990000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "households" ("add1", "add2", "home_taught?", "latitude", "longitude", "move_in", "move_out", "name") VALUES ('752 E 800 S', 'APT 21', 't', 40.7515, -111.869295, '2009-07-15', '2014-02-20', 'James & Caitlyn Hall')
+D, [2014-03-12T12:01:07.999000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "households" ("add1", "email", "latitude", "longitude", "move_in", "name") VALUES ('1012 Lincoln', 'iamkcerb@gmail.com', 40.747135, -111.86412, '2012-11-15', 'Bryce & Dianne Ward')[0m
+D, [2014-03-12T12:01:08.006000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "households" ("add1", "latitude", "longitude", "move_in", "name") VALUES ('123 Fake St.', 40.750878, -111.867949, '2005-09-11', 'Less Active')
+D, [2014-03-12T12:01:08.026000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mUPDATE "members" SET "household_id" = 1 WHERE "members"."id" = 1[0m
+D, [2014-03-12T12:01:08.031000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "household_id" = 1 WHERE "members"."id" = 2
+D, [2014-03-12T12:01:08.044000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "members" SET "house_id" = 1 WHERE "members"."id" = 3[0m
+D, [2014-03-12T12:01:08.051000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  UPDATE "members" SET "household_id" = 2 WHERE "members"."id" = 5
+D, [2014-03-12T12:01:08.056000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "members" SET "household_id" = 2 WHERE "members"."id" = 6[0m
+D, [2014-03-12T12:01:08.065000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "house_id" = 2 WHERE "members"."id" = 7
+D, [2014-03-12T12:01:08.073000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "members" SET "household_id" = 3 WHERE "members"."id" = 4[0m
+D, [2014-03-12T12:01:08.082000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  UPDATE "members" SET "household_id" = 4 WHERE "members"."id" = 8
+D, [2014-03-12T12:01:08.089000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "members" SET "household_id" = 5 WHERE "members"."id" = 9[0m
+D, [2014-03-12T12:01:08.094000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "members" SET "household_id" = 5 WHERE "members"."id" = 10
+D, [2014-03-12T12:01:08.104000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mUPDATE "members" SET "household_id" = 6 WHERE "members"."id" = 11[0m
+D, [2014-03-12T12:01:08.109000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  UPDATE "members" SET "household_id" = 6 WHERE "members"."id" = 12
+D, [2014-03-12T12:01:08.123000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "members" SET "household_id" = 7 WHERE "members"."id" = 13[0m
+D, [2014-03-12T12:01:08.133000 #17255] DEBUG -- :   [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type = 'table' AND name = "districts"
+D, [2014-03-12T12:01:08.146000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "districts" DEFAULT VALUES[0m
+D, [2014-03-12T12:01:08.151000 #17255] DEBUG -- :   [1m[35m (1.0ms)[0m  SELECT name FROM sqlite_master WHERE type = 'table' AND name = "assignments"
+D, [2014-03-12T12:01:08.166000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "assignments" ("month") VALUES (2)[0m
+D, [2014-03-12T12:01:08.172000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "assignments" ("month") VALUES (2)
+D, [2014-03-12T12:01:08.177000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assignments" ("month") VALUES (3)[0m
+D, [2014-03-12T12:01:08.183000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assignments" ("month") VALUES (3)
+D, [2014-03-12T12:01:08.188000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assignments" ("month") VALUES (3)[0m
+D, [2014-03-12T12:01:08.201000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "assignments" SET "district_id" = 1 WHERE "assignments"."id" = 1
+D, [2014-03-12T12:01:08.215000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "assignments" SET "district_id" = 1 WHERE "assignments"."id" = 2[0m
+D, [2014-03-12T12:01:08.220000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "assignments" SET "district_id" = 1 WHERE "assignments"."id" = 3
+D, [2014-03-12T12:01:08.224000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mUPDATE "assignments" SET "district_id" = 1 WHERE "assignments"."id" = 4[0m
+D, [2014-03-12T12:01:08.233000 #17255] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."district_id" = 1 ORDER BY "members"."id" ASC LIMIT 1
+D, [2014-03-12T12:01:08.240000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "members" SET "district_id" = 1 WHERE "members"."id" = 5[0m
+D, [2014-03-12T12:01:08.263000 #17255] DEBUG -- :   [1m[35m (1.0ms)[0m  SELECT name FROM sqlite_master WHERE type = 'table' AND name = "assigned_teachers"
+D, [2014-03-12T12:01:08.288000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (1, 5)[0m
+D, [2014-03-12T12:01:08.295000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (1, 4)
+D, [2014-03-12T12:01:08.308000 #17255] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "assigned_teachees"[0m
+D, [2014-03-12T12:01:08.327000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (1, 1)
+D, [2014-03-12T12:01:08.332000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (1, 5)[0m
+D, [2014-03-12T12:01:08.337000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (1, 6)
+D, [2014-03-12T12:01:08.351000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (2, 1)[0m
+D, [2014-03-12T12:01:08.357000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (2, 9)
+D, [2014-03-12T12:01:08.362000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (2, 11)[0m
+D, [2014-03-12T12:01:08.373000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (2, 2)
+D, [2014-03-12T12:01:08.378000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (2, 3)[0m
+D, [2014-03-12T12:01:08.388000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (3, 5)
+D, [2014-03-12T12:01:08.397000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (3, 4)[0m
+D, [2014-03-12T12:01:08.406000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (3, 1)
+D, [2014-03-12T12:01:08.416000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (4, 1)[0m
+D, [2014-03-12T12:01:08.421000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (4, 11)
+D, [2014-03-12T12:01:08.431000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (4, 2)[0m
+D, [2014-03-12T12:01:08.440000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (4, 3)
+D, [2014-03-12T12:01:08.448000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (5, 1)[0m
+D, [2014-03-12T12:01:08.453000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "assigned_teachers" ("assignment_id", "member_id") VALUES (5, 2)
+D, [2014-03-12T12:01:08.464000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "assigned_teachees" ("assignment_id", "household_id") VALUES (5, 6)[0m
+D, [2014-03-12T12:01:08.479000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "households" SET "ward_id" = 1 WHERE "households"."id" = 2
+D, [2014-03-12T12:01:08.485000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "households" SET "ward_id" = 1 WHERE "households"."id" = 1[0m
+D, [2014-03-12T12:01:08.491000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "households" SET "ward_id" = 1 WHERE "households"."id" = 3
+D, [2014-03-12T12:01:08.498000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "households" SET "ward_id" = 1 WHERE "households"."id" = 4[0m
+D, [2014-03-12T12:01:08.503000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "households" SET "ward_id" = 1 WHERE "households"."id" = 5
+D, [2014-03-12T12:01:08.509000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "households" SET "ward_id" = 1 WHERE "households"."id" = 6[0m
+D, [2014-03-12T12:01:08.515000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "households" SET "ward_id" = 1 WHERE "households"."id" = 7
+D, [2014-03-12T12:01:08.520000 #17255] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "tags"[0m
+D, [2014-03-12T12:01:08.531000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "tags" ("name") VALUES ('Do not contact')
+D, [2014-03-12T12:01:08.536000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "tags" ("name") VALUES ('Has Car')[0m
+D, [2014-03-12T12:01:08.557000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "tags" ("name") VALUES ('Computer Skills')
+D, [2014-03-12T12:01:08.582000 #17255] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "household_tags"[0m
+D, [2014-03-12T12:01:08.607000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "household_tags" ("household_id", "tag_id") VALUES (7, 1)
+D, [2014-03-12T12:01:08.616000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "household_tags" ("household_id", "tag_id") VALUES (1, 2)[0m
+D, [2014-03-12T12:01:08.620000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "household_tags" ("household_id", "tag_id") VALUES (1, 3)
+D, [2014-03-12T12:01:08.628000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "household_tags" ("household_id", "tag_id") VALUES (2, 2)[0m
+D, [2014-03-12T12:01:08.634000 #17255] DEBUG -- :   [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type = 'table' AND name = "notes"
+D, [2014-03-12T12:01:08.652000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "notes" ("date", "description") VALUES ('2014-03-07', 'Broken legs')[0m
+D, [2014-03-12T12:01:08.658000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "notes" ("date", "description") VALUES ('2014-03-12', 'Needs help in garden')
+D, [2014-03-12T12:01:08.662000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "notes" ("date", "description") VALUES ('2014-02-02', 'Just had a Baby, they''re doing well')[0m
+D, [2014-03-12T12:01:08.677000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "notes" SET "household_id" = 4 WHERE "notes"."id" = 1
+D, [2014-03-12T12:01:08.680000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mUPDATE "notes" SET "household_id" = 4 WHERE "notes"."id" = 2[0m
+D, [2014-03-12T12:01:08.686000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "notes" SET "household_id" = 1 WHERE "notes"."id" = 3
+D, [2014-03-12T12:01:08.690000 #17255] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "action_items"[0m
+D, [2014-03-12T12:01:08.706000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "action_items" ("description", "expires") VALUES ('Mow a lawn', '2014-03-19')
+D, [2014-03-12T12:01:08.721000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mUPDATE "action_items" SET "user_id" = 1 WHERE "action_items"."id" = 1[0m
+D, [2014-03-12T12:01:08.725000 #17255] DEBUG -- :   [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type = 'table' AND name = "settings"
+D, [2014-03-12T12:01:08.747000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "settings" ("use_gmail?") VALUES ('t')[0m
+D, [2014-03-12T12:01:08.752000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "settings" ("use_voice?") VALUES ('t')
+D, [2014-03-12T12:01:08.756000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "settings" ("teach_self") VALUES ('disallow')[0m
+D, [2014-03-12T12:01:08.760000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "settings" ("teach_comp") VALUES ('warn')
+D, [2014-03-12T12:01:08.764000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "settings" ("teach_teacher") VALUES ('allow')[0m
+D, [2014-03-12T12:01:08.779000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "settings" SET "user_id" = 1 WHERE "settings"."id" = 1
+D, [2014-03-12T12:01:08.783000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "settings" SET "user_id" = 1 WHERE "settings"."id" = 2[0m
+D, [2014-03-12T12:01:08.787000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "settings" SET "user_id" = 1 WHERE "settings"."id" = 3
+D, [2014-03-12T12:01:08.791000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mUPDATE "settings" SET "user_id" = 1 WHERE "settings"."id" = 4[0m
+D, [2014-03-12T12:01:08.797000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  UPDATE "settings" SET "user_id" = 1 WHERE "settings"."id" = 5
+D, [2014-03-12T12:01:08.812000 #17255] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "taught_records"[0m
+D, [2014-03-12T12:01:08.829000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "taught_records" ("household_id", "month", "score") VALUES (1, 2, 1)
+D, [2014-03-12T12:01:08.836000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "taught_records" ("household_id", "month", "score") VALUES (5, 2, 3)[0m
+D, [2014-03-12T12:01:08.842000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "taught_records" ("household_id", "month", "score") VALUES (6, 2, 2)
+D, [2014-03-12T12:01:08.848000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "taught_records" ("household_id", "month", "score") VALUES (2, 2, 4)[0m
+D, [2014-03-12T12:01:08.855000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "taught_records" ("household_id", "month", "score") VALUES (3, 2, 4)
+D, [2014-03-12T12:01:08.860000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "taught_records" ("household_id", "month", "score") VALUES (1, 3, 0)[0m
+D, [2014-03-12T12:01:08.865000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "taught_records" ("household_id", "month", "score") VALUES (2, 3, 3)
+D, [2014-03-12T12:01:08.871000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "taught_records" ("household_id", "month", "score") VALUES (3, 3, 4)[0m
+D, [2014-03-12T12:01:08.879000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "taught_records" ("household_id", "month", "score") VALUES (6, 3, 4)
+D, [2014-03-12T12:01:08.891000 #17255] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "teach_records"[0m
+D, [2014-03-12T12:01:08.909000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "teach_records" ("member_id", "month", "score") VALUES (5, 2, 2.0)
+D, [2014-03-12T12:01:08.915000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "teach_records" ("member_id", "month", "score") VALUES (4, 2, 2.0)[0m
+D, [2014-03-12T12:01:08.923000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "teach_records" ("member_id", "month", "score") VALUES (1, 2, 4.0)
+D, [2014-03-12T12:01:08.930000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "teach_records" ("member_id", "month", "score") VALUES (9, 2, 4.0)[0m
+D, [2014-03-12T12:01:08.938000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "teach_records" ("member_id", "month", "score") VALUES (11, 2, 4.0)
+D, [2014-03-12T12:01:08.944000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "teach_records" ("member_id", "month", "score") VALUES (5, 3, 0.0)[0m
+D, [2014-03-12T12:01:08.950000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "teach_records" ("member_id", "month", "score") VALUES (4, 3, 0.0)
+D, [2014-03-12T12:01:08.956000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "teach_records" ("member_id", "month", "score") VALUES (1, 3, 3.7)[0m
+D, [2014-03-12T12:01:08.963000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "teach_records" ("member_id", "month", "score") VALUES (11, 3, 3.5)
+D, [2014-03-12T12:01:08.969000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "teach_records" ("member_id", "month", "score") VALUES (2, 3, 4.0)[0m
+D, [2014-03-12T12:01:08.978000 #17255] DEBUG -- :   [1m[35m (1.0ms)[0m  SELECT name FROM sqlite_master WHERE type = 'table' AND name = "attendance_records"
+D, [2014-03-12T12:01:08.994000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (1, 2, 75)[0m
+D, [2014-03-12T12:01:09.003000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (5, 2, 100)
+D, [2014-03-12T12:01:09.009000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (4, 2, 75)[0m
+D, [2014-03-12T12:01:09.016000 #17255] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  INSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (11, 2, 25)
+D, [2014-03-12T12:01:09.022000 #17255] DEBUG -- :   [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (9, 2, 50)[0m
+D, [2014-03-12T12:01:09.028000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (1, 3, 100)
+D, [2014-03-12T12:01:09.033000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (5, 3, 100)[0m
+D, [2014-03-12T12:01:09.043000 #17255] DEBUG -- :   [1m[35mSQL (1.0ms)[0m  INSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (4, 3, 0)
+D, [2014-03-12T12:01:09.053000 #17255] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "attendance_records" ("member_id", "month", "percent") VALUES (11, 3, 100)[0m
+D, [2014-03-12T12:01:09.220000 #17255] DEBUG -- :   [1m[35mMember Load (1.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
+D, [2014-03-12T12:01:09.225000 #17255] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1[0m
+D, [2014-03-12T12:01:09.229000 #17255] DEBUG -- :   [1m[35mHousehold Load (1.0ms)[0m  SELECT "households".* FROM "households" WHERE "households"."id" = 1 ORDER BY "households"."id" ASC LIMIT 1
+D, [2014-03-12T12:01:09.234000 #17255] DEBUG -- :   [1m[36mHousehold Load (0.0ms)[0m  [1mSELECT "households".* FROM "households" WHERE "households"."name" = 'KC Erb & Shelyse Hardy' LIMIT 1[0m
+D, [2014-03-12T12:01:09.239000 #17255] DEBUG -- :   [1m[35mMember Load (1.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
+D, [2014-03-12T12:01:09.243000 #17255] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."spouse_id" = 1 ORDER BY "members"."id" ASC LIMIT 1[0m
+D, [2014-03-12T12:01:09.247000 #17255] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
+D, [2014-03-12T12:01:09.284000 #17255] DEBUG -- :   [1m[36mAssignment Load (1.0ms)[0m  [1mSELECT "assignments".* FROM "assignments" INNER JOIN "assigned_teachers" ON "assignments"."id" = "assigned_teachers"."assignment_id" WHERE "assigned_teachers"."member_id" = 1 AND "assignments"."month" = 3[0m
+D, [2014-03-12T12:01:09.294000 #17255] DEBUG -- :   [1m[35mHousehold Load (1.0ms)[0m  SELECT "households".* FROM "households" INNER JOIN "assigned_teachees" ON "households"."id" = "assigned_teachees"."household_id" WHERE "assigned_teachees"."assignment_id" = 4
+D, [2014-03-12T12:01:09.298000 #17255] DEBUG -- :   [1m[36mHousehold Load (0.0ms)[0m  [1mSELECT "households".* FROM "households" INNER JOIN "assigned_teachees" ON "households"."id" = "assigned_teachees"."household_id" WHERE "assigned_teachees"."assignment_id" = 5[0m
+D, [2014-03-12T12:01:09.301000 #17255] DEBUG -- :   [1m[35mHousehold Load (1.0ms)[0m  SELECT "households".* FROM "households" WHERE "households"."name" = 'Cory & Sharlie Erb' LIMIT 1
+D, [2014-03-12T12:01:09.303000 #17255] DEBUG -- :   [1m[36mHousehold Load (1.0ms)[0m  [1mSELECT "households".* FROM "households" WHERE "households"."name" = 'Oliver Prögler' LIMIT 1[0m
+D, [2014-03-12T12:01:09.305000 #17255] DEBUG -- :   [1m[35mHousehold Load (0.0ms)[0m  SELECT "households".* FROM "households" WHERE "households"."name" = 'Bryce & Dianne Ward' LIMIT 1
+D, [2014-03-12T12:01:09.309000 #17255] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1[0m
+D, [2014-03-12T12:01:09.312000 #17255] DEBUG -- :   [1m[35mHousehold Load (0.0ms)[0m  SELECT "households".* FROM "households" WHERE "households"."id" = 1 ORDER BY "households"."id" ASC LIMIT 1
+D, [2014-03-12T12:01:09.321000 #17255] DEBUG -- :   [1m[36mAssignment Load (0.0ms)[0m  [1mSELECT "assignments".* FROM "assignments" INNER JOIN "assigned_teachees" ON "assignments"."id" = "assigned_teachees"."assignment_id" WHERE "assigned_teachees"."household_id" = 1 AND "assignments"."month" = 2 LIMIT 1[0m
+D, [2014-03-12T12:01:09.325000 #17255] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'Cory' LIMIT 1
+D, [2014-03-12T12:01:09.327000 #17255] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'Oliver' LIMIT 1[0m
+D, [2014-03-12T12:01:09.330000 #17255] DEBUG -- :   [1m[35mMember Load (1.0ms)[0m  SELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 1
+D, [2014-03-12T12:01:09.333000 #17255] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1[0m
+D, [2014-03-12T12:01:09.338000 #17255] DEBUG -- :   [1m[35mAssignment Load (0.0ms)[0m  SELECT "assignments".* FROM "assignments" INNER JOIN "assigned_teachers" ON "assignments"."id" = "assigned_teachers"."assignment_id" WHERE "assigned_teachers"."member_id" = 1 AND "assignments"."month" = 2
+D, [2014-03-12T12:01:09.342000 #17255] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 2[0m
+D, [2014-03-12T12:01:09.345000 #17255] DEBUG -- :   [1m[35mMember Load (1.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'James' LIMIT 1
+D, [2014-03-12T12:01:09.347000 #17255] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'Bryce' LIMIT 1[0m
+D, [2014-03-12T12:01:09.350000 #17255] DEBUG -- :   [1m[35mMember Load (1.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
+D, [2014-03-12T12:01:09.354000 #17255] DEBUG -- :   [1m[36mAssignment Load (0.0ms)[0m  [1mSELECT "assignments".* FROM "assignments" INNER JOIN "assigned_teachers" ON "assignments"."id" = "assigned_teachers"."assignment_id" WHERE "assigned_teachers"."member_id" = 1 AND "assignments"."month" = 3[0m
+D, [2014-03-12T12:01:09.360000 #17255] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 4
+D, [2014-03-12T12:01:09.363000 #17255] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 5[0m
+D, [2014-03-12T12:01:09.366000 #17255] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'Bryce' LIMIT 1
+D, [2014-03-12T12:01:09.367000 #17255] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'Shelyse' LIMIT 1[0m
+D, [2014-03-12T12:01:09.370000 #17255] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
+D, [2014-03-12T12:01:09.374000 #17255] DEBUG -- :   [1m[36mAttendanceRecord Load (0.0ms)[0m  [1mSELECT "attendance_records".* FROM "attendance_records" WHERE "attendance_records"."member_id" = 1 AND "attendance_records"."month" = 2 LIMIT 1[0m
+D, [2014-03-12T12:01:09.377000 #17255] DEBUG -- :   [1m[35mAttendanceRecord Load (0.0ms)[0m  SELECT "attendance_records".* FROM "attendance_records" WHERE "attendance_records"."member_id" = 1 AND "attendance_records"."month" = 3 LIMIT 1
+D, [2014-03-12T12:01:09.381000 #17255] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1[0m
+D, [2014-03-12T12:01:09.386000 #17255] DEBUG -- :   [1m[35mTeachRecord Load (0.0ms)[0m  SELECT "teach_records".* FROM "teach_records" WHERE "teach_records"."member_id" = 1 AND "teach_records"."month" = 2 LIMIT 1
+D, [2014-03-12T12:01:09.389000 #17255] DEBUG -- :   [1m[36mTeachRecord Load (0.0ms)[0m  [1mSELECT "teach_records".* FROM "teach_records" WHERE "teach_records"."member_id" = 1 AND "teach_records"."month" = 3 LIMIT 1[0m
+D, [2014-03-12T12:01:09.393000 #17255] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
+D, [2014-03-12T12:01:09.395000 #17255] DEBUG -- :   [1m[36mHousehold Load (0.0ms)[0m  [1mSELECT "households".* FROM "households" WHERE "households"."id" = 1 ORDER BY "households"."id" ASC LIMIT 1[0m
+D, [2014-03-12T12:01:09.398000 #17255] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."house_id" = 1
+D, [2014-03-12T12:01:09.401000 #17255] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1[0m
+D, [2014-03-12T12:01:09.405000 #17255] DEBUG -- :   [1m[35mHousehold Load (0.0ms)[0m  SELECT "households".* FROM "households" WHERE "households"."id" = 1 ORDER BY "households"."id" ASC LIMIT 1
+D, [2014-03-12T12:01:09.420000 #17255] DEBUG -- :   [1m[36mMember Load (7.0ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."house_id" = 1 AND "members"."pref_name" = 'Audrey' LIMIT 1[0m
+D, [2014-03-12T12:01:09.433000 #17255] DEBUG -- :   [1m[35mMember Load (1.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
+D, [2014-03-12T12:01:09.442000 #17255] DEBUG -- :   [1m[36mHousehold Load (0.0ms)[0m  [1mSELECT "households".* FROM "households" WHERE "households"."id" = 1 ORDER BY "households"."id" ASC LIMIT 1[0m
+D, [2014-03-12T12:01:09.445000 #17255] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" WHERE "members"."pref_name" = 'KC' LIMIT 1
+D, [2014-03-12T12:01:09.448000 #17255] DEBUG -- :   [1m[36mHousehold Load (1.0ms)[0m  [1mSELECT "households".* FROM "households" WHERE "households"."id" = 1 ORDER BY "households"."id" ASC LIMIT 1[0m
+D, [2014-03-12T12:01:09.451000 #17255] DEBUG -- :   [1m[35mWard Load (0.0ms)[0m  SELECT "wards".* FROM "wards" WHERE "wards"."id" = 1 ORDER BY "wards"."id" ASC LIMIT 1
+D, [2014-03-12T12:01:09.455000 #17255] DEBUG -- :   [1m[36mWard Load (0.0ms)[0m  [1mSELECT "wards".* FROM "wards" ORDER BY "wards"."id" ASC LIMIT 1[0m

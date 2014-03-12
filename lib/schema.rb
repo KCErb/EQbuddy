@@ -34,7 +34,7 @@ ActiveRecord::Schema.define do
   create_table :households do |table|
     table.string :ward_id
     
-    table.string :house_name
+    table.string :name
     table.string :add1
     table.string :add2
     table.decimal :latitude
