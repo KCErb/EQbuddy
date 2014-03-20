@@ -6,6 +6,7 @@ shared_context "schema context" do
   
   let (:kc) {Member.find_by_pref_name("KC")}
   let (:shelyse) {Member.find_by_pref_name("Shelyse")}
+  let (:audrey) {Member.find_by_pref_name("Audrey")}
   let (:oliver) {Member.find_by_pref_name("Oliver")}
   let (:cory) {Member.find_by_pref_name("Cory")}
   let (:james) {Member.find_by_pref_name("James")}

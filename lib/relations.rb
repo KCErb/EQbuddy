@@ -33,7 +33,6 @@ end
 
 class Household < ActiveRecord::Base
   belongs_to :ward, inverse_of: :households
-  has_many :tags, inverse_of: :household
   has_many :notes, inverse_of: :household
   has_many :taught_records, inverse_of: :household
 
@@ -45,8 +44,8 @@ class Household < ActiveRecord::Base
   has_many :assigned_teachees
   has_many :assignments, through: :assigned_teachees
   #has_many :teachers, through: :assignments
-  def teachers(month)
-    ment = self.assignments.find_by_month(month)
+  def teachers
+    ment = self.assignments.where(published: true).take
     ment.teachers
   end
 end
@@ -73,17 +72,17 @@ class Member < ActiveRecord::Base
   delegate :add1, to: :household
   delegate :add2, to: :household
 
-  def teachees(month)
-    ments = self.assignments.where(month: month)
+  def teachees
+    ments = self.assignments.where(published: true)
     ments.each.collect{|ment| ment.teachees}.flatten
   end
   
-  def teachers(month)
-    self.household.teachers(month)
+  def teachers
+    self.household.teachers
   end
 
-  def companions(month)
-    ment = self.assignments.where(month: month)
+  def companions
+    ment = self.assignments.where(published: true)
     ment.each.collect{|ment| ment.teachers}.flatten - [self]
   end
 end

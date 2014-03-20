@@ -98,19 +98,19 @@ active.heads << [less]
 d1 = District.create
 
 #Assignments
-a1 = Assignment.create(month: 2)
-a2 = Assignment.create(month: 2)
+a1 = Assignment.create(published: true)
+a2 = Assignment.create(published: true)
 
-a3 = Assignment.create(month: 3)
-a4 = Assignment.create(month: 3)
+a3 = Assignment.create(published: false)
+a4 = Assignment.create(published: false)
 
-a5 = Assignment.create(month: 3)
+a5 = Assignment.create(published: false)
 
 d1.assignments << [a1, a2, a3, a4]
 d1.district_leader = cory
 
 #---
-#Feb
+#Current - Published
 #---
 a1.teachers << [cory, oliver]
 a1.teachees << [erb_hardy, halls, wards]
@@ -118,7 +118,7 @@ a1.teachees << [erb_hardy, halls, wards]
 a2.teachers << [kc, james, bryce]
 a2.teachees << [erbs, progler]
 #---
-#Mar
+#Draft
 #---
 a3.teachers << [cory, oliver]
 a3.teachees << [erb_hardy]

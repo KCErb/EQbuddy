@@ -18,20 +18,12 @@ describe "KC" do
     kc.spouse.pref_name.should == "Shelyse"
   end
 #teachees
-  it "'s March teachees are the Erbs, Oliver, and the Wards." do
-    kc.teachees(3).should == [erbs, progler, wards]
-  end
-#teachers
-  it "'s Feb teachers are Cory and Oliver." do
-    kc.teachers(2).should == [cory, oliver]
+  it "'s current teachers are Cory and Oliver." do
+    kc.teachers.should == [cory, oliver]
   end
 #companions
-  it "'s Feb companions are James and Bryce." do
-    kc.companions(2).should == [james, bryce]
-  end
-
-  it "'s Mar companions are Bryce and Shelyse." do
-    kc.companions(3).should == [bryce, shelyse]
+  it "'s current companions are James and Bryce." do
+    kc.companions.should == [james, bryce]
   end
 
 #Attedance, teaching history / records

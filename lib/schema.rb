@@ -18,7 +18,7 @@ ActiveRecord::Schema.define do
 
   create_table :assignments do |table|
     table.integer :district_id
-    table.integer :month
+    table.boolean :published
   end
 
   create_table :attendance_records do |table|
