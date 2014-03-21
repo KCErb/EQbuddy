@@ -2,7 +2,6 @@
 require 'active_record'
 
 #eqb files
-require_relative 'eqbuddy'
 require_relative 'ment-box'
 require_relative 'relations'
 
