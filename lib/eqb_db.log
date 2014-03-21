@@ -1,7 +1,8 @@
-D, [2014-03-20T16:29:44.017000 #2303] DEBUG -- :   [1m[36mAssignment Load (6.0ms)[0m  [1mSELECT "assignments".* FROM "assignments"[0m
-D, [2014-03-20T16:29:44.028000 #2303] DEBUG -- :   [1m[35m (1.0ms)[0m  SELECT name FROM sqlite_master WHERE type = 'table' AND name = "assignments"
-D, [2014-03-20T16:29:44.096000 #2303] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "members"[0m
-D, [2014-03-20T16:29:44.130000 #2303] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 1
-D, [2014-03-20T16:29:44.226000 #2303] DEBUG -- :   [1m[36mMember Load (0.0ms)[0m  [1mSELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 2[0m
-D, [2014-03-20T16:29:44.239000 #2303] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 3
-D, [2014-03-20T16:29:44.251000 #2303] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 4[0m
+D, [2014-03-21T13:53:56.707000 #6388] DEBUG -- :   [1m[36mAssignment Load (5.0ms)[0m  [1mSELECT "assignments".* FROM "assignments"[0m
+D, [2014-03-21T13:53:56.719000 #6388] DEBUG -- :   [1m[35m (0.0ms)[0m  SELECT name FROM sqlite_master WHERE type = 'table' AND name = "assignments"
+D, [2014-03-21T13:53:56.807000 #6388] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mSELECT name FROM sqlite_master WHERE type = 'table' AND name = "members"[0m
+D, [2014-03-21T13:53:56.840000 #6388] DEBUG -- :   [1m[35mMember Load (0.0ms)[0m  SELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 1
+D, [2014-03-21T13:53:56.934000 #6388] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 2[0m
+D, [2014-03-21T13:53:56.950000 #6388] DEBUG -- :   [1m[35mMember Load (1.0ms)[0m  SELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 3
+D, [2014-03-21T13:53:56.966000 #6388] DEBUG -- :   [1m[36mMember Load (1.0ms)[0m  [1mSELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 4[0m
+D, [2014-03-21T13:53:56.998000 #6388] DEBUG -- :   [1m[35mMember Load (1.0ms)[0m  SELECT "members".* FROM "members" INNER JOIN "assigned_teachers" ON "members"."id" = "assigned_teachers"."member_id" WHERE "assigned_teachers"."assignment_id" = 5
