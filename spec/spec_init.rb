@@ -16,7 +16,7 @@ ActiveRecord::Base.establish_connection(
 CURR_MONTH = Time.now.month
 
 #Pull in the EQbuddy files
-require_relative $DIR + '/lib/schema'
+require_relative $DIR + '/lib/database/schema'
 require_relative $DIR + '/lib/relations'
 
 
