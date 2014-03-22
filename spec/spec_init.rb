@@ -1,5 +1,4 @@
 #encoding: utf-8
-require 'rspec'
 
 path = File.expand_path File.dirname(__FILE__)
 $DIR = path.gsub(/\/spec/,'')
