@@ -1,4 +1,0 @@
-language: ruby
-script: "rake spec:all"
-rvm:
-  - jruby-19mode 
