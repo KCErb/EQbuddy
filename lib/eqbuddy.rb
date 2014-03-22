@@ -22,7 +22,7 @@ require_relative 'init'
 Shoes.app width: 500, height: 400, left: 100, top: 200, title: "EQbuddy" do
 $app = self
 
-  Assignment.all.each do |ment|
+  Assignment.where(published: true).each do |ment|
     ment.teachers.each do |teacher|
       MentBox.new(teacher.pref_name)
     end
