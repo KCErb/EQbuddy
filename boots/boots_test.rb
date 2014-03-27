@@ -1,21 +1,27 @@
 require_relative 'col'
 require_relative 'row'
-Shoes.app width: 1000 do
-  row do
-    col lg: 6, md: 4 do
-      background purple
-      para "content"
-    end
-    col lg: 6, md: 4 do
-      background red
-      para "content"
-    end
+LARGE = 1200
+MEDIUM = 1000
+SMALL = 800
+XSMALL = 600
+
+Shoes.app width: XSMALL do
   
-    col lg: 6, md: 4 do
+  row do
+   @c1= col lg: 4, md: 6, sm: 8, xs: 10 do
+      background white
+      para "content"
+    end
+    @c2= col lg: 4, md: 6, sm: 8, xs: 10 do
       background blue
       para "content"
     end
+    @c3= col lg: 4, md: 6, sm: 8, xs: 10 do
+      background red
+      para "content"
+    end
   end
+
 end
 
 

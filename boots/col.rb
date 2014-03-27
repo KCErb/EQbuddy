@@ -1,17 +1,16 @@
 class Col < Shoes::Widget
   def initialize(opts = {}, &blk)
-    @opts = opts
-    @blk = blk
-
-    @col_width = col_width(opts)
-
-    stack width: @col_width do
+    s = stack width: col_width(opts) do
       flow do
         blk.call
       end
     end
+    
+    app.resize do
+      s.width = col_width(opts)
+    end
   end
-
+  
   private
 
   def col_width(opts)
