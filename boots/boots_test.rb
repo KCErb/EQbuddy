@@ -1,27 +1,53 @@
-require_relative 'col'
-require_relative 'row'
-LARGE = 1200
-MEDIUM = 1000
-SMALL = 800
-XSMALL = 600
+require_relative 'boots'
 
-Shoes.app width: XSMALL do
+Shoes.app width: 1300 do
   
+  style(Shoes::Para, size: 16, margin: 10)
+
   row do
-   @c1= col lg: 4, md: 6, sm: 8, xs: 10 do
-      background white
-      para "content"
+    12.times do
+      col md: 1 do
+        para "col-md-1"
+      end
     end
-    @c2= col lg: 4, md: 6, sm: 8, xs: 10 do
-      background blue
-      para "content"
+  end
+
+  row do
+    col md: 8 do
+      para ".col-md-8"
     end
-    @c3= col lg: 4, md: 6, sm: 8, xs: 10 do
-      background red
-      para "content"
+    col md: 4 do 
+      para ".col-md-4"
+    end
+  end
+
+  row do
+    3.times do
+      col md: 4 do
+        para ".col-md-4"
+      end
+    end
+  end
+  row do
+    2.times do
+      col md: 6 do
+        para ".col-md-6"
+      end
+    end
+  end
+
+  flow do
+    background blue
+    stack width: 80 do
+      border black
+      para "side bar"
+    end
+    12.times do |i|
+      stack width: 78 do
+        border black
+        para "stack ##{i}"
+      end
     end
   end
 
 end
-
-
