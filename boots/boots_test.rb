@@ -1,6 +1,6 @@
 require_relative 'boots'
 
-Shoes.app width: 1300 do
+Shoes.app width: 700 do
   
   style(Shoes::Para, size: 16, margin: 10)
 
@@ -35,19 +35,15 @@ Shoes.app width: 1300 do
       end
     end
   end
-
+=begin
   flow do
     background blue
-    stack width: 80 do
-      border black
-      para "side bar"
-    end
     12.times do |i|
-      stack width: 78 do
+      stack width: 1.0 do
         border black
         para "stack ##{i}"
       end
     end
   end
-
+=end
 end

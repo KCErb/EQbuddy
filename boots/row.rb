@@ -6,25 +6,24 @@ module Boots
       margin_array = [0, 10, 0, 10]
 
 
-      f = flow margin: margin_array, width: side_width do
+      f1 = flow margin: margin_array, width: side_width do
         background red
       end
 
-      f = flow margin: margin_array, width: content_width do
+      f2 = flow margin: margin_array, width: content_width do
         background blue
         blk.call
       end
 
-      f = flow margin: margin_array, width: side_width do
-        background red
+      f3 = flow margin: margin_array, width: side_width do
+        background green
       end
 
-      p side_width
-      
-      #app.resize do
-      # a flows margins can't be set this way yet. . .
-      #  f.style( margin: margin_array)
-      #end
+      app.resize do
+        f1.width = side_width
+        f2.width = content_width
+        f3.width = side_width
+      end
     end
 
     private
@@ -32,7 +31,7 @@ module Boots
     def side_width
       case
       when app.width < SCREEN_SM_MIN
-        0.0
+        1
       when app.width < SCREEN_MD_MIN
         (app.width - CONTENT_WIDTH_SM)/2
       when app.width < SCREEN_LG_MIN
