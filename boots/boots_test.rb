@@ -1,5 +1,5 @@
 require_relative 'boots'
-Shoes.app width: 700 do
+Shoes.app width: 770 do
 
   style(Shoes::Para, size: 16, margin: 10)
 

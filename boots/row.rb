@@ -4,7 +4,7 @@ module Boots
       @opts = opts
       @blk = blk
 
-      flow margin: margin_bottom: 10 do
+      flow margin_bottom: 10 do
         blk.call
       end
 

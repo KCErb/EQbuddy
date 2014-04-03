@@ -10,26 +10,13 @@ module Boots
       end
 
       resize do
-        s.width = col_size(opts)
+        s.width = col_size(opts) if size_transition?
+        p "transition at width: #{app.width}" if size_transition?
       end
     end
 
     private
-
-    def column_width
-      case
-      when app.width >= SCREEN_LG_MIN
-        COL_WIDTH_LG
-      when app.width >= SCREEN_MD_MIN 
-        COL_WIDTH_MD
-      when app.width >= SCREEN_SM_MIN 
-        COL_WIDTH_SM
-      when app.width < SCREEN_SM_MIN 
-        1.0
-      end
-
-    end
-
+   
     def col_size(opts)
       case
       when app.width >= SCREEN_LG_MIN && opts[:lg]
@@ -39,10 +26,34 @@ module Boots
       when app.width >= SCREEN_SM_MIN && opts[:sm]
         opts[:sm] * column_width
       when app.width < SCREEN_SM_MIN && opts[:xs]
-        opts[:xs].to_f / 12.0
+        opts[:xs] * column_width
       else
+        12 * column_width 
+      end
+    end
+
+    def column_width
+      case
+      when app.width >= SCREEN_LG_MIN
+        @curr_size = "lg"
+        COL_WIDTH_LG
+      when app.width >= SCREEN_MD_MIN 
+        @curr_size = "md"
+        COL_WIDTH_MD
+      when app.width >= SCREEN_SM_MIN 
+        @curr_size = "sm"
+        COL_WIDTH_SM
+      when app.width < SCREEN_SM_MIN 
+        @curr_size = "xs"
         1.0
       end
+    end
+
+    def size_transition?
+      @prev_size = @curr_size
+      column_width
+      @new_size = @curr_size
+      @prev_size != @curr_size
     end
 
   end
