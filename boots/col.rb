@@ -11,7 +11,6 @@ module Boots
 
       resize do
         s.width = col_size(opts) if size_transition?
-        p "transition at width: #{app.width}" if size_transition?
       end
     end
 
