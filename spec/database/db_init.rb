@@ -1,22 +1,18 @@
 #encoding: utf-8
-# This is a helper file. We create a mock ward
-# to work with. If something goes wrong. Just run
-# this and it will create the base ward again.
+#Set up the database by creating a new ward and everything from scratch then let the tests test the reading and writing of the database.
+# Reset test files - db and log
+File.delete('spec/database/spec_test.db') if File.file?('spec/database/spec_test.db')
+ActiveRecord::Base.logger = Logger.new(File.open('spec/database/spec_test.log', 'w'))
 
-require 'active_record'
 
-File.delete('lib/database/eqbuddy.db') if File.file?('lib/database/eqbuddy.db')
-
-ActiveRecord::Base.logger = Logger.new(File.open('lib/database/eqb_db.log', 'w'))
-
+#Connect to db
 ActiveRecord::Base.establish_connection(
   :adapter  => 'jdbcsqlite3',
-  :database => 'lib/database/eqbuddy.db'
+  :database => 'spec/database/spec_test.db'
 )
 
-require_relative 'schema'
-require_relative '../models/relations'
-
+#define schema
+require_relative '../../lib/database/schema'
 
 module EQbuddy
   ward = Ward.create(ward_number: '2168', stake_number: '1')

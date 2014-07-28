@@ -1,21 +1,20 @@
 #gems
 require 'active_record'
+require 'shoes'
+require 'bundler/setup'
 
-#eqb files
-require_relative 'ment-box'
-require_relative 'relations'
+#models
+require_relative 'models/relations'
+#views
+require_relative 'views/ment-box'
+
+#controllers
+require_relative 'controllers/start'
 
 
-
-$DIR = File.expand_path File.dirname(__FILE__)
-
-ActiveRecord::Base.logger = Logger.new(File.open($DIR + '/database/eqb_db.log', 'w'))
-
+# 'connect' to database
+#ActiveRecord::Base.logger = Logger.new('lib/database/eqb_db.log', 'w')
 ActiveRecord::Base.establish_connection(
   :adapter  => 'jdbcsqlite3',
-  :database => $DIR + '/database/eqbuddy.db'
+  :database => 'lib/database/eqbuddy.db'
 )
-
-
-
-

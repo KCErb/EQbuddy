@@ -84,7 +84,6 @@ ActiveRecord::Schema.define do
     table.string :teach_self    #Disallow, allow, warn
     table.string :teach_comp    #Disallow, allow, warn
     table.string :teach_teacher #Disallow, allow, warn
-
   end
 
   create_table :taught_records do |table|
