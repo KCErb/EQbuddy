@@ -1,4 +1,7 @@
 module EQbuddy
+
+  DEFAULT_IMAGE_ID = "no_photo"
+
   class ActionItem < ActiveRecord::Base
     belongs_to :user, inverse_of: :action_items
   end
@@ -43,9 +46,15 @@ module EQbuddy
     has_many :tags, through: :household_tags
     has_many :assigned_teachees
     has_many :assignments, through: :assigned_teachees
-    #has_many :teachers, through: :assignments
+
+    after_initialize :init
+
+    def init
+      self.image_id  ||= DEFAULT_IMAGE_ID
+    end
+
     def teachers
-      ment = self.assignments.where(published: true).take
+      ment = self.assignments.where(draft: "published").take
       ment.teachers
     end
   end
@@ -72,8 +81,14 @@ module EQbuddy
     delegate :add1, to: :household
     delegate :add2, to: :household
 
+    after_initialize :init
+
+    def init
+      self.image_id  ||= DEFAULT_IMAGE_ID
+    end
+
     def teachees
-      ments = self.assignments.where(published: true)
+      ments = self.assignments.where(draft: "published")
       ments.each.collect{|ment| ment.teachees}.flatten
     end
 
@@ -82,7 +97,7 @@ module EQbuddy
     end
 
     def companions
-      ment = self.assignments.where(published: true)
+      ment = self.assignments.where(draft: "published")
       ment.each.collect{|ment| ment.teachers}.flatten - [self]
     end
   end

@@ -4,12 +4,15 @@ require 'shoes'
 require 'bundler/setup'
 
 #models
-require_relative 'models/relations'
+models = File.expand_path('lib/models/*.rb')
+Dir[models].each { |f| require f }
 #views
-require_relative 'views/ment-box'
+views = File.expand_path('lib/views/*.rb')
+Dir[views].each { |f| require f }
 
 #controllers
-require_relative 'controllers/start'
+controllers = File.expand_path('lib/controllers/*.rb')
+Dir[controllers].each { |f| require f }
 
 
 # 'connect' to database

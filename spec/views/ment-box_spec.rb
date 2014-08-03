@@ -1,12 +1,12 @@
 #encoding: utf-8
 require 'spec_helper'
 
-describe "MentBox" do
-  subject(:ment_box) { EQbuddy::MentBox.new("Test") }
+describe "MentBoxView" do
 
-  it "has a slot which is a flow" do
-    expect(subject.slot.class).to eq(Shoes::Flow)
-  end
+  include_context "schema context"
+  let(:ment) {cory.assignments.first}
+  let(:controller) { EQbuddy::MentBoxController.new(ment) }
+  subject(:ment_box_view) { controller.view }
 
-  it "belongs to an assignment"
+  
 end

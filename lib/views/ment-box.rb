@@ -1,18 +1,29 @@
 module EQbuddy
   class MentBox < Shoes::Widget
-    attr_reader :slot, :top_bar
-    def initialize(txt)
-      @slot = flow height: 100, width: 200, margin: 10 do
-        @top_bar = background red, height: 100, curve: 5
-        para txt, margin: 20
 
-        hover do
-          @top_bar.style(fill: gray)
-        end
-        leave do
-          @top_bar.style(fill: red)
+    attr_reader :controller, :top_bar, :stack
+    attr_accessor :state
+
+    def initialize(controller)
+      @controller = controller
+      @state = :closed
+      draw_stack
+    end
+
+    def draw_stack
+      @stack = flow height: 45 do
+        @top_bar = background eval(controller.color), curve: 5
+        draw_pictures
+      end
+    end
+
+    def draw_pictures
+      flow do
+        controller.top_bar_pictures.each do |picture|
+          image picture, height: 45
         end
       end
     end
+
   end
 end

@@ -6,7 +6,7 @@ shared_context "schema context" do
   let (:ward) {EQbuddy::Ward.first} #there's only one ward
 
   let (:user) {EQbuddy::User.first}
-  
+
   let (:kc) {EQbuddy::Member.find_by_pref_name("KC")}
   let (:shelyse) {EQbuddy::Member.find_by_pref_name("Shelyse")}
   let (:audrey) {EQbuddy::Member.find_by_pref_name("Audrey")}

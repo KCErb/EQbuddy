@@ -1,3 +1,18 @@
+PATH
+  remote: ~/Programming/Shoes/shoes4
+  specs:
+    shoes (4.0.0.pre1)
+      furoshiki (>= 0.1.2)
+      nokogiri
+      shoes-dsl (= 4.0.0.pre1)
+      shoes-swt (= 4.0.0.pre1)
+    shoes-dsl (4.0.0.pre1)
+    shoes-swt (4.0.0.pre1)
+      after_do (~> 0.3)
+      furoshiki (>= 0.1.2)
+      shoes-dsl (= 4.0.0.pre1)
+      swt (~> 0.18)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -53,11 +68,6 @@ GEM
       rspec-support (~> 3.0.0)
     rspec-support (3.0.3)
     rubyzip (0.9.9)
-    shoes (4.0.0.pre1)
-      after_do (~> 0.3)
-      furoshiki (>= 0.1.2)
-      nokogiri
-      swt (~> 0.18)
     swt (0.18)
     thread_safe (0.3.4)
     thread_safe (0.3.4-java)
@@ -80,4 +90,4 @@ DEPENDENCIES
   rake (>= 0.9.6)
   rspec (~> 3.0.0)
   rspec-its (~> 1.0.1)
-  shoes (~> 4.0.0.pre1)
+  shoes!

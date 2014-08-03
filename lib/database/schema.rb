@@ -18,7 +18,7 @@ ActiveRecord::Schema.define do
 
   create_table :assignments do |table|
     table.integer :district_id
-    table.boolean :published
+    table.string :draft
   end
 
   create_table :attendance_records do |table|
@@ -29,11 +29,12 @@ ActiveRecord::Schema.define do
 
   create_table :districts do |table|
     table.integer :district_leader_id
+    table.string :color
   end
 
   create_table :households do |table|
     table.string :ward_id
-    
+
     table.string :name
     table.string :add1
     table.string :add2
