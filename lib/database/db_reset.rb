@@ -25,7 +25,8 @@ module EQbuddy
   user.ward = ward
   #Members
   kc =      Member.create( last_name: 'Erb', pref_name: 'KC', gender: 'Male', phone: '8015548253',
-                          email: 'iamkcerb@gmail.com', home_teaches?: true, dob: Date.new(1988,4,28) )
+                          email: 'iamkcerb@gmail.com', home_teaches?: true, image_id: 't100jmj99',
+                          dob: Date.new(1988,4,28))
   shelyse = Member.create( last_name: 'Hardy', pref_name: 'Shelyse', gender: 'Female', phone: '8015548253',
                           home_teaches?: true, dob: Date.new(1991,3,17))
   audrey =  Member.create( last_name: 'Erb', pref_name: 'Audrey', gender: 'Female', home_teaches?: false,
@@ -42,11 +43,12 @@ module EQbuddy
   mildred = Member.create( last_name: 'Tucker', pref_name: 'Mildred', gender: 'Female', home_teaches?: false,
                           dob: Date.new(1938,12,22))
   james =   Member.create( last_name: 'Hall', pref_name: 'James', gender: 'Male', phone: '8015548253',
-                          email: 'iamkcerb@gmail.com', home_teaches?: true, dob: Date.new(1987,9,21))
+                          email: 'iamkcerb@gmail.com', home_teaches?: true,  image_id: 't300jmj99',
+                          dob: Date.new(1987,9,21))
   caitlyn = Member.create( last_name: 'Hall', pref_name: 'Caitlyn', gender: 'Female', phone: '8015548253',
                           home_teaches?: false, dob: Date.new(1985,7,11))
   bryce =   Member.create( last_name: 'Ward', pref_name: 'Bryce', gender: 'Male', phone: '8015548253',
-                          home_teaches?: true, dob: Date.new(1983,9,23))
+                          home_teaches?: true,  image_id: 't400jmj99', dob: Date.new(1983,9,23))
   dianne =  Member.create( last_name: 'Ward', pref_name: 'Dianne', other_names: 'Ruth', gender: 'Female',
                           email: 'iamkcerb@gmail.com', home_teaches?: false, dob: Date.new(1984,3,1))
   less =    Member.create( last_name: 'Active', pref_name: 'Less', gender: 'Male')
@@ -73,10 +75,11 @@ module EQbuddy
   tucker =    Household.create( name: "Mildred Tucker", add1: '967 S 900 E', latitude: 40.747956,
                                longitude: -111.865184, home_taught?: false, move_in: Date.new(1974,3,15))
   halls =     Household.create( name: "James & Caitlyn Hall", add1: '752 E 800 S', add2: 'APT 21',
-                               latitude: 40.751500, longitude: -111.869295, home_taught?: true, move_in: Date.new(2009,7,15),
-                               move_out: Date.new(2014,2,20))
+                               latitude: 40.751500, longitude: -111.869295, home_taught?: true, image_id: 't300jmj89',
+                               move_in: Date.new(2009,7,15), move_out: Date.new(2014,2,20))
   wards =     Household.create( name: "Bryce & Dianne Ward", add1: '1012 Lincoln', latitude: 40.747135,
-                               longitude: -111.864120, email: 'iamkcerb@gmail.com', move_in: Date.new(2012,11,15))
+                               longitude: -111.864120, image_id: 't400jmj89', email: 'iamkcerb@gmail.com',
+                               move_in: Date.new(2012,11,15))
   active =    Household.create( name: "Less Active", add1: '123 Fake St.', latitude: 40.750878, longitude: -111.867949,
                                move_in: Date.new(2005,9,11))
 
