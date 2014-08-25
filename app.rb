@@ -1,6 +1,7 @@
 #encoding: utf-8
 require_relative 'lib/init'
-Shoes.app width: 500, height: 400, left: 100, top: 200, title: "EQbuddy" do
+Shoes.app width: 900, height: 700, title: "EQbuddy" do
+  background white
   extend EQbuddy
   start(app)
 end
