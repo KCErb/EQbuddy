@@ -1,5 +1,6 @@
 #gems
 require 'active_record'
+require 'shoes'
 require 'bundler/setup'
 
 #models
@@ -11,13 +12,13 @@ Dir[views].each { |f| require f }
 #controllers
 controllers = File.expand_path('lib/controllers/*.rb')
 Dir[controllers].each { |f| require f }
-
 #boots
 #File.expand_path('lib/boots')
 
-# 'connect' to database
-#ActiveRecord::Base.logger = Logger.new('lib/database/eqb_db.log', 'w')
-ActiveRecord::Base.establish_connection(
-  :adapter  => 'jdbcsqlite3',
-  :database => 'lib/database/eqbuddy.db'
-)
+# 'connect' to database unless testing since specs have their own db
+unless $TESTING
+  ActiveRecord::Base.establish_connection(
+    :adapter  => 'jdbcsqlite3',
+    :database => 'lib/database/eqbuddy.db'
+  )
+end

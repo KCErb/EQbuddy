@@ -1,6 +1,8 @@
 SPEC_ROOT = File.expand_path('..', __FILE__)
 $LOAD_PATH << File.join('../lib', SPEC_ROOT)
 
+$TESTING = true
+
 require 'active_record'
 require_relative 'contexts/schema_context'
 require_relative '../app'

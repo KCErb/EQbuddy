@@ -8,5 +8,5 @@ describe "MentBoxView" do
   let(:controller) { EQbuddy::MentBoxController.new(ment) }
   subject(:ment_box_view) { controller.view }
 
-  
+
 end

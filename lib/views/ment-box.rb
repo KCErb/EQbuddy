@@ -12,7 +12,7 @@ module EQbuddy
     end
 
     def draw_closed
-      flow height: 65, width: 305, margin: 10 do
+      flow height: 60, width: 285, margin: [15, 15, 0, 0] do
         background controller.color, curve: 5
         draw_pictures
         draw_chevron
@@ -27,8 +27,8 @@ module EQbuddy
 
     def draw_chevron
       # TODO figure out how to get parent width?!
-      para "\uf078", font: "Fontawesome", stroke: white, left: 265, top: 20,
-      size: 20
+      para "\uf078", font: "Fontawesome", stroke: white, left: 255, top: 28,
+      size: 16, weight: "light"
     end
 
   end

@@ -1,5 +1,12 @@
 # EQbuddy
 
+## Note
+This software is being developed on pre-alpha shoes. Unfortunately that means things
+don't work and get broken a lot. Since I'm also a shoes developer, a lot of the features
+implemented here only work on the current version of Shoes (not the latest release). That
+means in order to run this you need to use `path/to/shoes4/bin/shoes app.rb`.
+
+## About
 EQbuddy is a Shoes-based application which is designed to modernize the home teaching assignment process. It's first goal is to meet the criteria outlined in this tech.lds.org forum [discussion](http://tech.lds.org/forum/viewtopic.php?f=15&t=14738&hilit=home+teaching+program&sid=ec037248f91e33bf0f2c1849c66493ec.)
 
 The upshot of this discussion is, a third party HT/VT app must:
