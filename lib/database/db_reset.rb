@@ -97,6 +97,7 @@ module EQbuddy
 
   #District
   d1 = District.create( color: "green")
+  d2 = District.create( color: "blue")
 
   #Assignments
   a1 = Assignment.create( draft: "published")
@@ -107,8 +108,11 @@ module EQbuddy
 
   a5 = Assignment.create( draft: "August")
 
-  d1.assignments << [a1, a2, a3, a4]
+  d1.assignments << [a1, a3]
   d1.district_leader = cory
+
+  d2.assignments << [a2, a4, a5]
+  d2.district_leader = kc
 
   #---
   #Current - Published
