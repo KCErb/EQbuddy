@@ -1,6 +1,5 @@
 #gems
 require 'active_record'
-require 'shoes'
 require 'bundler/setup'
 
 #models

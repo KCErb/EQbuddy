@@ -21,6 +21,11 @@ module EQbuddy
       pictures
     end
 
+    def state
+      #TODO use ment.state or user.state or something
+      :closed
+    end
+
     def to_image_path(image_id)
       File.expand_path("images/people") + "/" + image_id + ".jpg"
     end
