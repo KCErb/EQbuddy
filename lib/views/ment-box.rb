@@ -2,20 +2,43 @@
 module EQbuddy
   class MentBox < Shoes::Widget
 
-    attr_reader :controller, :top_bar
-    attr_accessor :state
+    attr_reader :controller, :body
+    # TODO attr_accessor state - widget is broken right now
+    # TODO also, this thing opens and stays open due to some
+    #      widget issues as well :(
 
     def initialize(controller)
       @controller = controller
-      @state = :closed
+      @body = stack
+      @state = controller.state
       @state == :closed ? draw_closed : draw_open
     end
 
     def draw_closed
-      flow height: 65, width: 305, margin: 10 do
-        background controller.color, curve: 5
-        draw_pictures
-        draw_chevron
+      @state = :closed
+      body.style(height: 60, width: 285, margin: [15, 15, 0, 0])
+      body.clear do
+        flow do
+          background controller.color, curve: 5
+          draw_pictures
+          draw_chevron white
+        end
+      end
+    end
+
+    def draw_open
+      @state = :open
+      # TODO left should not have to be explicitly set to zero
+      # Also, you should attach the bottom background curve to the bottom segment
+      # Or something instead of a fixed height like you have here
+      body.style(width: 285, margin: [15, 15, 0, 0])
+      body.clear do
+        flow do
+          background controller.color, curve: 5, height: 60
+          draw_chevron white
+        end
+        background rgb(240, 240, 240), height: 40, top: 220, left: 0, curve: 5
+        background rgb(240, 240, 240), height: 200, top: 40, left: 0
       end
     end
 
@@ -25,10 +48,11 @@ module EQbuddy
       end
     end
 
-    def draw_chevron
+    def draw_chevron(color)
       # TODO figure out how to get parent width?!
-      para "\uf078", font: "Fontawesome", stroke: white, left: 265, top: 20,
-      size: 20
+      chevron = @state == :closed ? "\uf078" : "\uf077"
+      para chevron, font: "Fontawesome", stroke: color, left: 240, top: 13,
+           size: 16, click: proc { @state == :closed ? draw_open : draw_closed }
     end
 
   end
